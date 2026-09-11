@@ -5,7 +5,7 @@ The home hero plays the supplied A → B → C footage as a full-viewport scroll
 ## Tuning
 
 - **Distance:** `NeuronHero.module.css` reserves `900vh` of native sticky travel plus the viewport-height panel. The renderer derives its progress directly from that layout, with no scroll interception or JavaScript pin spacer.
-- **Playback rate:** `advanceMotion` in `narrative.ts` moves toward the requested scroll position at a fixed linear rate. Fast wheel and touchpad gestures can change the destination but cannot accelerate the footage, and there is no easing tail after scrolling stops. Native scrolling is never intercepted.
+- **Playback response:** `advanceMotion` in `narrative.ts` uses a short critically damped response. It eases into movement, catches quick wheel and touchpad gestures promptly, and settles without overshoot. The analytic update remains consistent across display refresh rates, and native scrolling is never intercepted.
 - **Joins:** `getNarrative` overlaps the two clips by 6%. The outgoing frame blends into the moving incoming clip, which continues at the same frame when it becomes current. The unused C → A source remains available, but is intentionally excluded so the closing “Intelligence” chapter stays paired with C.
 - **Frame interpolation:** `useNeuronScroll.ts` blends neighboring extracted frames on every display refresh. Its RAF stops once motion settles; loading callbacks can request a new draw.
 

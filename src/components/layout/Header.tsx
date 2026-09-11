@@ -73,8 +73,7 @@ export function Header() {
       >
         <div className="mx-auto flex h-full w-full items-center justify-between px-5 sm:px-8 lg:px-12">
           <CyberILogo
-            className="h-8 sm:h-9"
-            imageClassName="brightness-0 opacity-85"
+            className="h-12 py-0.5 sm:h-13"
           />
 
           <nav aria-label="Primary navigation" className="hidden items-center gap-7 lg:flex xl:gap-9">

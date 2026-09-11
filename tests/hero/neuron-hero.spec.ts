@@ -10,23 +10,59 @@ async function seek(page: Page, value: number) {
   }, value);
 }
 
-test("motion uses a fixed rate regardless of scroll distance or display frame rate", () => {
+test("motion eases quickly without overshoot and remains display-rate independent", () => {
   let near = { position: 0, velocity: 0 };
   let far = { position: 0, velocity: 0 };
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 4; i++) {
     near = advanceMotion(near, 0.4, 1 / 60);
     far = advanceMotion(far, 1, 1 / 60);
   }
-  expect(near.position).toBeCloseTo(far.position, 10);
-  expect(near.velocity).toBe(far.velocity);
+  expect(near.position).toBeGreaterThan(0);
+  expect(near.position).toBeLessThan(0.4);
+  expect(far.position).toBeGreaterThan(near.position);
+  expect(far.position).toBeLessThan(1);
 
   let sixtyHz = { position: 0, velocity: 0 };
   let oneTwentyHz = { position: 0, velocity: 0 };
-  for (let i = 0; i < 180; i++) sixtyHz = advanceMotion(sixtyHz, 0.5, 1 / 60);
-  for (let i = 0; i < 360; i++) oneTwentyHz = advanceMotion(oneTwentyHz, 0.5, 1 / 120);
+  for (let i = 0; i < 60; i++) sixtyHz = advanceMotion(sixtyHz, 0.5, 1 / 60);
+  for (let i = 0; i < 120; i++) oneTwentyHz = advanceMotion(oneTwentyHz, 0.5, 1 / 120);
   expect(sixtyHz.position).toBeCloseTo(0.5, 10);
   expect(oneTwentyHz.position).toBeCloseTo(sixtyHz.position, 10);
   expect(sixtyHz.velocity).toBe(0);
+
+  let reverse = { position: 0.8, velocity: 0 };
+  for (let i = 0; i < 60; i++) {
+    const previous = reverse.position;
+    reverse = advanceMotion(reverse, 0.2, 1 / 60);
+    expect(reverse.position).toBeLessThanOrEqual(previous);
+    expect(reverse.position).toBeGreaterThanOrEqual(0.2);
+  }
+  expect(reverse).toEqual({ position: 0.2, velocity: 0 });
+});
+
+test("new brand identity and discovery metadata are published consistently", async ({ page, request }) => {
+  await page.goto("/");
+
+  const headerLogo = page.getByRole("link", { name: "Cyber-I home" }).locator("img");
+  await expect(headerLogo).toHaveAttribute("src", /cyber-i-logo-2026\.png/);
+  await expect(page.locator('link[rel="icon"][href*="/icon"]')).toHaveCount(1);
+  await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveCount(1);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "http://localhost:3000");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/opengraph-image\.png/);
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
+  expect(await page.locator('script[type="application/ld+json"]').textContent()).toContain("Cyber-I Consultancy");
+
+  const manifestResponse = await request.get("/manifest.webmanifest");
+  expect(manifestResponse.ok()).toBe(true);
+  expect(await manifestResponse.text()).toContain("cyber-i-site-icon-2026.png");
+
+  const robotsResponse = await request.get("/robots.txt");
+  expect(robotsResponse.ok()).toBe(true);
+  expect(await robotsResponse.text()).toContain("Sitemap: http://localhost:3000/sitemap.xml");
+
+  const sitemapResponse = await request.get("/sitemap.xml");
+  expect(sitemapResponse.ok()).toBe(true);
+  expect(await sitemapResponse.text()).toContain("/services/cyber-crime-investigation");
 });
 
 test("clip join overlaps continuously and the final frame remains on C", () => {
@@ -63,10 +99,11 @@ test("desktop has a full-screen continuous flight, chapter copy, sticky header a
   await page.screenshot({ path: "tmp/hero-desktop-top.png" });
 
   await seek(page, 0.22);
-  await page.waitForTimeout(90);
+  await page.waitForTimeout(35);
   const accelerating = await progress(page);
-  expect(accelerating).toBeLessThan(0.2);
-  await page.waitForTimeout(300);
+  expect(accelerating).toBeGreaterThan(0);
+  expect(accelerating).toBeLessThan(0.22);
+  await page.waitForTimeout(75);
   const coasting = await progress(page);
   expect(coasting).toBeGreaterThan(accelerating);
   expect(coasting).toBeLessThan(0.22);

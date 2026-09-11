@@ -27,19 +27,30 @@ export function getNarrative(progress: number) {
 
 export interface MotionState { position: number; velocity: number }
 
-const PLAYBACK_RATE = 0.22;
+const MOTION_RESPONSE = 18;
+const SETTLED_DISTANCE = 0.0001;
+const SETTLED_VELOCITY = 0.001;
 
-/** Move toward the requested scroll position at one linear playback rate. Scroll
- * distance only changes the destination; it never accelerates the footage.
+/** Follow the requested scroll position with a short, critically damped ease.
+ * The analytic spring is frame-rate independent, starts gently, settles quickly,
+ * and cannot overshoot a stationary target in either scroll direction.
  */
 export function advanceMotion(state: MotionState, target: number, seconds: number): MotionState {
-  const dt = Math.min(seconds, 0.064);
-  const distance = target - state.position;
-  const step = PLAYBACK_RATE * dt;
-  if (Math.abs(distance) <= step) return { position: target, velocity: 0 };
-  const direction = Math.sign(distance);
-  return {
-    position: clamp(state.position + direction * step),
-    velocity: direction * PLAYBACK_RATE,
-  };
+  const destination = clamp(target);
+  const dt = Math.max(0, Math.min(seconds, 0.064));
+  const displacement = state.position - destination;
+  const springVelocity = state.velocity + displacement * MOTION_RESPONSE;
+  const decay = Math.exp(-MOTION_RESPONSE * dt);
+  const nextPosition = destination + (displacement + springVelocity * dt) * decay;
+  const nextVelocity = (state.velocity - springVelocity * MOTION_RESPONSE * dt) * decay;
+
+  const crossedTarget = (destination - state.position) * (destination - nextPosition) <= 0;
+  if (
+    crossedTarget ||
+    (Math.abs(destination - nextPosition) < SETTLED_DISTANCE && Math.abs(nextVelocity) < SETTLED_VELOCITY)
+  ) {
+    return { position: destination, velocity: 0 };
+  }
+
+  return { position: clamp(nextPosition), velocity: nextVelocity };
 }

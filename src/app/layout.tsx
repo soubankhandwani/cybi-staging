@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Cousine } from "next/font/google";
 import { SiteFrame } from "@/components/layout/SiteFrame";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 const cousine = Cousine({
   variable: "--font-cousine",
@@ -13,12 +12,45 @@ const cousine = Cousine({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: "Cyber-I | Information. Investigation. Intelligence.",
-  description: "Intelligence analysis, investigations, digital forensics, cyber expertise, and strategic advisory.",
-  icons: {
-    icon: [{ url: "/images/brand/cyberi-site-icon.png", type: "image/png", sizes: "512x512" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  applicationName: "Cyber-I",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Cybersecurity",
+  keywords: [
+    "cyber investigation",
+    "digital forensics",
+    "cybersecurity consultancy",
+    "information analysis",
+    "cyber law",
+    "cybersecurity training",
+    "Mumbai",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
