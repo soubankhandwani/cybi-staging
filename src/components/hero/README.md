@@ -17,11 +17,11 @@ Initially missing directories:
 - `/public/hero/frames/b-to-c/`
 - `/public/hero/frames/c-to-a/`
 
-These have been populated with actual frames extracted from the supplied `/public/hero/neuron a to b.mp4`, `/public/hero/neuron b to c.mp4`, and `/public/hero/neuron c to a.mp4`. Each contains 96 WebP files, `frame-0001.webp` through `frame-0096.webp`, at 1280 × 720 and 24 fps. `flight-manifest.json` lists the exact generated paths. No placeholder imagery is used. The original PNGs remain on disk but are no longer rendered.
+These have been populated with watermark-free frames extracted from the clean 1920 × 1080 source files at `/public/hero/neuron a to b.mp4`, `/public/hero/neuron b to c.mp4`, and `/public/hero/neuron c to a.mp4`. Each contains 96 WebP files, `frame-0001.webp` through `frame-0096.webp`, scaled to 1280 × 720 at 24 fps. `flight-manifest.json` lists the exact generated paths. No placeholder imagery is used. The original PNGs remain on disk but are no longer rendered.
 
 `scripts/extract-hero-frames.mjs` reproduces the extraction using FFmpeg (`FFMPEG_PATH` can specify its executable). It refuses to overwrite a nonempty frame directory. Run `pnpm hero:frames` only with empty target directories.
 
-The supplied 823 KB ambient WebM is reused unchanged (about 822 kb/s, eight seconds). Playback is muted and inline. The supplied world stills cover loading, playback rejection, and failed flight requests.
+The clean eight-second background source is retained at `/public/hero/bg-video.mp4` and encoded as the optimized 1280 × 720 VP9 `/public/hero/ambient-neural-loop.webm` used at runtime. The A, B, and C world stills were regenerated from the clean transition videos so loading, playback rejection, and failed-frame fallbacks are watermark-free as well. Playback is muted and inline.
 
 ## Performance and accessibility
 
