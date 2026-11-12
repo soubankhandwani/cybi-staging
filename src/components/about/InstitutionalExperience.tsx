@@ -7,7 +7,7 @@ import { EditorialImagePlaceholder } from "@/components/ui/EditorialImagePlaceho
 export function InstitutionalExperience() {
   return (
     <section className="border-x border-b border-deep-navy bg-ice-gray text-obsidian" aria-labelledby="experience-title">
-      <header className="grid border-b border-deep-navy lg:grid-cols-[1fr_0.8fr]">
+      <header className="grid grid-cols-1 border-b border-deep-navy lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
         <div className="p-7 sm:p-10 lg:border-r lg:p-12">
           <AboutLabel>09 / Institutional experience</AboutLabel>
           <h2 id="experience-title" className="mt-8 text-4xl leading-none font-bold tracking-[-0.05em] uppercase sm:text-6xl">Experience named in the legacy record.</h2>

@@ -49,13 +49,19 @@ export function Header() {
   useEffect(() => {
     if (!mobileMenuOpen) return;
     const previousOverflow = document.body.style.overflow;
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const closeOnDesktop = () => { if (desktop.matches) setMobileMenuOpen(false); };
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileMenuOpen(false);
+      if (event.key !== "Escape") return;
+      setMobileMenuOpen(false);
+      document.getElementById("mobile-navigation-toggle")?.focus();
     };
     document.body.style.overflow = "hidden";
+    desktop.addEventListener("change", closeOnDesktop);
     window.addEventListener("keydown", closeOnEscape);
     return () => {
       document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", closeOnDesktop);
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [mobileMenuOpen]);
@@ -90,6 +96,7 @@ export function Header() {
           </nav>
 
           <button
+            id="mobile-navigation-toggle"
             type="button"
             aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
             aria-controls="mobile-navigation"
@@ -118,7 +125,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 top-20 z-40 flex h-[calc(100dvh-5rem)] flex-col bg-intelligence-white px-6 py-8 text-midnight shadow-2xl sm:px-9 lg:hidden"
+            className="fixed inset-x-0 top-20 z-40 flex h-[calc(100dvh-5rem)] flex-col overflow-y-auto overscroll-contain bg-intelligence-white px-6 py-8 text-midnight shadow-2xl sm:px-9 lg:hidden"
           >
             <div className="mb-7 flex items-center gap-3 text-[9px] font-bold tracking-[0.18em] text-steel uppercase">
               <span className="h-px w-8 bg-command-blue" /> Navigation

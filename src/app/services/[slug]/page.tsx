@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/layout/PagePlaceholder";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ServiceDetailHero } from "@/components/service-detail/ServiceDetailHero";
 import { AudienceAndUseCases, InvestigationExpertise } from "@/components/service-detail/ExpertiseAndQualification";
 import { CapabilityBreakdown, ProblemRecognition } from "@/components/service-detail/ProblemAndCapabilities";
 import { InvestigationProcess, UnderstandingAndDeliverables } from "@/components/service-detail/ProcessAndOutcomes";
 import { InvestigationProof, ServiceConversionAndRelated, ServiceFAQ } from "@/components/service-detail/ProofFaqCTA";
+import { serviceNavigation } from "@/components/services/service-content";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -30,7 +31,11 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
 export default async function ServiceDetailsPage({ params }: ServicePageProps) {
   const { slug } = await params;
-  if (slug !== "cyber-crime-investigation") return <PagePlaceholder eyebrow="Services" title="Service Details" />;
+  if (slug !== "cyber-crime-investigation") {
+    const section = serviceNavigation.find(({ href }) => href.slice(1) === slug);
+    if (section) permanentRedirect(`/services${section.href}`);
+    notFound();
+  }
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",

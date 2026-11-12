@@ -22,7 +22,7 @@ export function EditorialHero({
       <div className="grid lg:grid-cols-[minmax(0,1fr)_18rem]">
         <div className="px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
           <p className="mb-8 text-[10px] font-bold tracking-[0.22em] text-command-blue uppercase dark:text-electric-blue">/ {eyebrow}</p>
-          <h1 className="max-w-6xl text-[clamp(2.75rem,7.4vw,7.75rem)] leading-[0.9] font-bold tracking-[-0.075em] text-obsidian uppercase dark:text-intelligence-white">{title}</h1>
+          <h1 className="max-w-6xl text-[clamp(2rem,7.4vw,7.75rem)] leading-[0.9] font-bold tracking-[-0.075em] text-obsidian uppercase dark:text-intelligence-white">{title}</h1>
           <div className="mt-10 grid gap-8 border-t border-deep-navy pt-6 md:grid-cols-[minmax(0,38rem)_auto] md:items-end md:justify-between">
             <p className="max-w-2xl text-sm leading-7 text-deep-navy dark:text-mist-blue sm:text-base">{description}</p>
             {actions && <div className="flex flex-wrap gap-3">{actions}</div>}
@@ -90,7 +90,7 @@ export function BlogCard({ post, featured = false }: { post: BlogPost; featured?
       <Link href={`/blog/${post.slug}`} className={cn("relative block overflow-hidden bg-deep-navy", featured ? "min-h-72 lg:min-h-[31rem]" : "aspect-[4/3]")} aria-label={`Read ${post.title}`}>
         <Image src={post.image} alt={post.imageAlt} fill sizes={featured ? "(max-width: 1024px) 100vw, 58vw" : "(max-width: 768px) 100vw, 33vw"} className="object-cover grayscale transition duration-700 group-hover:scale-[1.035] group-hover:grayscale-0" />
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian/50 to-transparent" />
-        <span className="absolute right-3 bottom-3 border border-intelligence-white/50 bg-obsidian/70 px-2 py-1 text-[9px] font-bold tracking-widest text-intelligence-white uppercase">Demo image</span>
+        {post.image.startsWith("/images/editorial/") && <span className="absolute right-3 bottom-3 border border-intelligence-white/50 bg-obsidian/70 px-2 py-1 text-[9px] font-bold tracking-widest text-intelligence-white uppercase">Demo image</span>}
       </Link>
       <div className={cn("flex flex-col p-5 sm:p-7", featured && "lg:justify-between lg:p-10")}>
         <div>
@@ -98,7 +98,7 @@ export function BlogCard({ post, featured = false }: { post: BlogPost; featured?
           <h2 className={cn("font-bold tracking-[-0.045em] text-obsidian dark:text-intelligence-white", featured ? "text-3xl leading-tight sm:text-5xl" : "text-xl leading-tight sm:text-2xl")}>
             <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-command-blue dark:hover:text-electric-blue">{post.title}</Link>
           </h2>
-          <p className="mt-5 text-sm leading-6 text-steel dark:text-mist-blue">{post.dek}</p>
+          <p className="mt-5 text-sm leading-6 text-steel dark:text-mist-blue">{post.subtitle}</p>
         </div>
         <div className="mt-8 flex items-center justify-between border-t border-ice-gray pt-4 text-[10px] font-bold tracking-wider uppercase dark:border-deep-navy">
           <time dateTime={post.date}>{post.displayDate}</time>

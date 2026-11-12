@@ -22,7 +22,7 @@ export function IdentityFramework() {
               <p className="p-6 text-sm leading-7 text-mist-blue md:p-8">{stage.description}</p>
             </article>
           ))}
-          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-2 border-t border-electric-blue/40 p-6 text-[9px] font-bold tracking-[0.08em] uppercase sm:p-8 sm:text-xs">
+          <div className="flex flex-wrap items-center gap-2 border-t border-electric-blue/40 p-6 text-[9px] font-bold tracking-[0.08em] uppercase sm:p-8 sm:text-xs">
             <span>Information</span><span className="text-electric-blue">→</span><span>Investigation</span><span className="text-electric-blue">→</span><span>Intelligence</span><span className="text-electric-blue">→</span><span className="text-electric-blue">Action</span>
           </div>
         </div>

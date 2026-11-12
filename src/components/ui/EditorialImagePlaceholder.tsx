@@ -15,7 +15,7 @@ export function EditorialImagePlaceholder({ code, subject, altDraft, inverse = f
       role="img"
       aria-label={`Image placeholder: ${subject}`}
       className={cn(
-        "group relative isolate flex min-h-56 overflow-hidden border",
+        "editorial-image-placeholder group relative isolate flex w-full min-w-0 min-h-56 overflow-hidden border [overflow-wrap:anywhere]",
         inverse ? "border-mist-blue/50 bg-midnight text-intelligence-white" : "border-deep-navy bg-ice-gray text-obsidian",
         className,
       )}
@@ -26,7 +26,7 @@ export function EditorialImagePlaceholder({ code, subject, altDraft, inverse = f
       <span aria-hidden="true" className="absolute bottom-4 left-4 h-6 w-6 border-b border-l border-electric-blue" />
       <span aria-hidden="true" className="absolute right-4 bottom-4 h-6 w-6 border-r border-b border-electric-blue" />
       <div className="relative z-10 flex w-full flex-col justify-between p-6 sm:p-8">
-        <div className="flex items-start justify-between gap-5 text-[8px] font-bold tracking-[0.15em] uppercase">
+        <div className="flex flex-wrap items-start justify-between gap-2 text-[8px] font-bold tracking-[0.15em] uppercase">
           <span className={inverse ? "text-electric-blue" : "text-command-blue"}>{code}</span>
           <span className={inverse ? "text-mist-blue" : "text-steel"}>Media / Pending</span>
         </div>

@@ -3,6 +3,8 @@ import { BookOpen, BriefcaseBusiness, Handshake, LockKeyhole, MessageCircleWarni
 import { ContactForm } from "@/components/interactive/ContactForm";
 import { EditorialHero, SectionLabel } from "@/components/editorial/PagePrimitives";
 import { incidentWhatsAppUrl } from "@/data/site-content";
+import { academyCourses } from "@/components/academy/academy-data";
+import { enquiryTypes } from "@/lib/contact";
 
 export const metadata: Metadata = { title: "Contact Cyber-I", description: "Contact Cyber-I about investigation, digital forensics, cybersecurity services, institutional training, courses, or partnerships." };
 
@@ -13,7 +15,14 @@ const paths = [
   { icon: MessageSquareText, title: "General enquiry", text: "Use this route when you are unsure which team should respond." },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: { searchParams: Promise<{ intent?: string; course?: string }> }) {
+  const { intent, course: code } = await searchParams;
+  const course = academyCourses.find((item) => item.code === code);
+  const courseEnquiry = intent === "course-advisor" || intent === "course-question";
+  const initialEnquiry = courseEnquiry ? enquiryTypes[1] : intent === "call" ? "General" : "";
+  const initialMessage = courseEnquiry && course
+    ? `I'd like to ask about ${course.title} (${course.code}).\n\n`
+    : intent === "call" ? "I'd like to arrange a call to discuss " : "";
   return (
     <main className="my-4 sm:my-6 md:my-8">
       <EditorialHero eyebrow="Contact / Secure starting point" index="09" title={<>Start with the <span className="text-command-blue dark:text-electric-blue">right signal.</span></>} description="Tell us what you need without sending sensitive evidence. The enquiry type helps route your message to the right area with minimal friction." actions={<a href={incidentWhatsAppUrl} target="_blank" rel="noreferrer" data-event="whatsapp_click" className="inline-flex min-h-11 items-center gap-2 border-2 border-electric-blue bg-electric-blue px-5 py-3 text-xs font-black tracking-[0.14em] text-obsidian uppercase shadow-[3px_3px_0_#23559c] transition-colors hover:bg-intelligence-white"><MessageCircleWarning className="h-4 w-4" aria-hidden="true" />Report an Incident</a>} />
@@ -30,7 +39,7 @@ export default function ContactPage() {
           </div>
           <div className="border border-deep-navy bg-intelligence-white p-5 shadow-[6px_6px_0_#21375a] dark:bg-obsidian sm:p-8">
             <div className="mb-8 flex items-center justify-between border-b border-deep-navy pb-5"><div><p className="text-[9px] font-bold tracking-widest text-command-blue uppercase dark:text-electric-blue">General enquiry</p><h2 className="mt-2 text-xl font-bold uppercase">Send a message</h2></div><span className="text-[9px] font-bold tracking-widest text-steel uppercase">Required fields *</span></div>
-            <ContactForm />
+            <ContactForm key={`${intent || ""}:${course?.code || ""}`} initialEnquiry={initialEnquiry} initialMessage={initialMessage} />
           </div>
         </div>
       </section>

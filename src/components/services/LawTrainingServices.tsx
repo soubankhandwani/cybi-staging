@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { AboutLabel, ActionLink } from "@/components/about/AboutPrimitives";
 import { TechnicalGrid } from "@/components/ui/TechnicalGrid";
 
@@ -13,7 +12,7 @@ export function CyberLawService() {
           <div className="mt-10 flex flex-wrap items-center gap-3 border-y border-deep-navy py-6 text-[10px] font-bold tracking-[0.1em] uppercase">
             <span>Technical evidence</span><span className="text-electric-blue">→</span><span>Investigation</span><span className="text-electric-blue">→</span><span>Legal understanding</span>
           </div>
-          <ActionLink href="/services/cyber-law-digital-evidence" variant="light" event="service_law_explore" className="mt-9">Explore Cyber Law & Digital Evidence</ActionLink>
+          <ActionLink href="/contact" variant="light" className="mt-9">Discuss cyber law and digital evidence</ActionLink>
         </div>
         <aside className="relative overflow-hidden border-t border-deep-navy p-7 sm:p-10 lg:border-t-0 lg:border-l lg:p-12">
           <TechnicalGrid className="opacity-20" />
@@ -41,8 +40,7 @@ export function TrainingService() {
             <p className="mt-7 max-w-xl text-sm leading-7 text-ice-gray">For law-enforcement, government, corporate and institutional training requirements in source-supported cyber investigation, digital forensics and cyber-law contexts.</p>
           </div>
           <div className="mt-10 flex flex-col items-start gap-5">
-            <ActionLink href="/services/institutional-training" variant="light" event="service_training_explore">Explore Institutional Training</ActionLink>
-            <Link href="/contact" data-event="service_training_contact" className="border-b border-electric-blue pb-1 text-[10px] font-bold tracking-[0.13em] uppercase hover:text-electric-blue">Discuss a training requirement →</Link>
+            <ActionLink href="/contact" variant="light" event="service_training_contact">Discuss a training requirement</ActionLink>
           </div>
         </article>
         <article className="flex min-h-[480px] flex-col justify-between bg-intelligence-white p-7 text-obsidian sm:p-10 lg:p-12">

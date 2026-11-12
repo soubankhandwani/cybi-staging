@@ -17,7 +17,7 @@ export function CyberILogo({ className, hideText = false, imageClassName }: Cybe
         width={hideText ? 512 : 541}
         height={hideText ? 512 : 461}
         sizes={hideText ? "48px" : "(min-width: 640px) 52px, 48px"}
-        priority
+        loading="eager"
         className={cn("h-full w-auto object-contain", imageClassName)}
       />
     </Link>

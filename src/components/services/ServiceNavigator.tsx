@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { serviceNavigation } from "@/components/services/service-content";
 
 export function ServiceNavigator() {
   const [activeId, setActiveId] = useState(serviceNavigation[0].href.slice(1));
+  const list = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,17 +25,17 @@ export function ServiceNavigator() {
   }, []);
 
   useEffect(() => {
-    const current = document.querySelector<HTMLAnchorElement>('a[aria-current="location"]');
-    current?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-      block: "nearest",
-      inline: "center",
-    });
+    const container = list.current;
+    const current = container?.querySelector('[aria-current="location"]');
+    if (!container || !current || container.scrollWidth <= container.clientWidth) return;
+    const item = current.getBoundingClientRect();
+    const bounds = container.getBoundingClientRect();
+    container.scrollBy({ left: item.left - bounds.left - (bounds.width - item.width) / 2 });
   }, [activeId]);
 
   return (
-    <nav aria-label="Service navigator" className="sticky top-0 z-30 border-x border-b border-deep-navy bg-intelligence-white/95 backdrop-blur-md dark:bg-obsidian/95" id="capabilities">
-      <ol className="custom-scrollbar flex overflow-x-auto lg:grid lg:grid-cols-5">
+    <nav aria-label="Service navigator" className="sticky top-20 z-30 border-x border-b border-deep-navy bg-intelligence-white/95 backdrop-blur-md dark:bg-obsidian/95" id="capabilities">
+      <ol ref={list} className="custom-scrollbar flex overflow-x-auto lg:grid lg:grid-cols-5">
         {serviceNavigation.map((item) => {
           const active = activeId === item.href.slice(1);
           return (

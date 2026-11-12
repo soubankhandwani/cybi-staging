@@ -1,9 +1,14 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { SiteExperience } from "@/components/interactive/SiteExperience";
-import { SecurityModal } from "@/components/interactive/SecurityModal";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 
 export function SiteFrame({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) return <>{children}</>;
+
   return (
     <SiteExperience>
       <div className="relative min-h-screen overflow-x-clip bg-intelligence-white text-obsidian transition-colors duration-300 dark:bg-obsidian dark:text-intelligence-white">
@@ -14,7 +19,6 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
           {children}
           <Footer />
         </div>
-        <SecurityModal />
       </div>
     </SiteExperience>
   );

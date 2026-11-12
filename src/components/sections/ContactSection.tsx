@@ -1,6 +1,5 @@
 import { Calendar, Mail, MessageCircleWarning } from "lucide-react";
 import { ContactForm } from "@/components/interactive/ContactForm";
-import { ModalTrigger } from "@/components/interactive/ModalTrigger";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TechnicalGrid } from "@/components/ui/TechnicalGrid";
 import { contactActions } from "@/data/site-content";
@@ -24,7 +23,7 @@ export function ContactSection() {
                   <TechnicalGrid />
                   <div className="relative z-10"><Icon className={cn("mb-4 h-6 w-6 transition-transform duration-300 group-hover:scale-110", featured ? "text-electric-blue" : "text-command-blue")} /><h3 className="mb-2 text-lg font-black tracking-wider uppercase">{action.title}</h3><p className={cn("mb-6 text-[11px] leading-relaxed font-bold tracking-wider uppercase sm:text-[12px]", featured ? "text-ice-gray" : "text-steel")}>{action.description}</p></div>
                   <div className="relative z-10 w-full">
-                    {"href" in action ? <a href={action.href} target={"external" in action ? "_blank" : undefined} rel={"external" in action ? "noreferrer" : undefined} data-event={featured ? "whatsapp_click" : undefined} className={cn("block w-full border px-4 py-2.5 text-center font-mono text-xs font-bold tracking-widest uppercase transition-all active:scale-[0.98]", featured ? "border-electric-blue bg-electric-blue text-obsidian hover:bg-intelligence-white" : "border-command-blue bg-intelligence-white text-command-blue hover:bg-signal-blue hover:text-intelligence-white")}>{action.label}</a> : <ModalTrigger modal="boost" variant="outline" size="sm" className="w-full border">{action.label}</ModalTrigger>}
+                    <a href={action.href} target={"external" in action ? "_blank" : undefined} rel={"external" in action ? "noreferrer" : undefined} data-event={featured ? "whatsapp_click" : undefined} className={cn("block w-full border px-4 py-2.5 text-center font-mono text-xs font-bold tracking-widest uppercase transition-all active:scale-[0.98]", featured ? "border-electric-blue bg-electric-blue text-obsidian hover:bg-intelligence-white" : "border-command-blue bg-intelligence-white text-command-blue hover:bg-signal-blue hover:text-intelligence-white")}>{action.label}</a>
                   </div>
                 </article>
               );

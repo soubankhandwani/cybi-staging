@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 import { demoTestimonials } from "@/data/editorial-content";
 import { EditorialHero, FinalCTA, OutlineLink, SectionLabel, TextLink } from "@/components/editorial/PagePrimitives";
 
-export const metadata: Metadata = { title: "Testimonials | Cyber-I", description: "Placeholder proof layouts for Cyber-I client, learner, and training-partner testimonials." };
+export const metadata: Metadata = { title: "Testimonials | Cyber-I", description: "Placeholder proof layouts for Cyber-I client, learner, and training-partner testimonials.", robots: { index: false } };
 
 export default function TestimonialsPage() {
   const [featured, ...others] = demoTestimonials;

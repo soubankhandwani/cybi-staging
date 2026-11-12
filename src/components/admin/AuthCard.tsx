@@ -1,0 +1,4 @@
+export function AuthCard({ eyebrow, title, description, children }: { eyebrow: string; title: string; description: string; children: React.ReactNode }) {
+  return <main className="admin-surface grid min-h-screen place-items-center bg-[#101a2b] px-4 py-10"><div className="w-full max-w-md bg-white p-7 shadow-2xl sm:p-10"><div className="mb-9 border-b border-slate-200 pb-6"><p className="text-xs font-bold tracking-[0.2em] text-command-blue uppercase">{eyebrow}</p><h1 className="mt-4 text-3xl font-bold tracking-[-0.05em] text-slate-950">{title}</h1><p className="mt-3 text-sm leading-6 text-slate-600">{description}</p></div>{children}<p className="mt-8 border-t border-slate-200 pt-5 text-center text-[10px] tracking-widest text-slate-400 uppercase">Authorized personnel only · Protected system</p></div></main>;
+}
+

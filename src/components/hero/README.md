@@ -27,8 +27,8 @@ The clean eight-second background source is retained at `/public/hero/bg-video.m
 
 The loader retains compressed blobs only for the current and next flight, prioritizes a seven-frame window around the current scroll position, limits concurrent fetches to six, and retains at most 24 decoded images. That larger hot window prevents visible jumps after fast wheel gestures without decoding whole sequences into memory. Disposal aborts fetches and releases bitmaps. A standard image-decoding fallback covers browsers without `createImageBitmap`. Canvas resolution is capped at 1920 pixels wide and 1.5 DPR. One temporary canvas is used only for clip transitions.
 
-Mobile/coarse-pointer and reduced-motion layouts use the ambient loop with a poster and no pin or frame loading. The ambience can be paused, and playback also pauses offscreen or when the document is hidden. Inactive chapter actions are removed from the tab order and hidden from assistive technology. Hero content stays semantic HTML above the decorative canvas.
+Phone layouts use a poster and load no animation frames or video. The desktop ambient loop starts paused when reduced motion is enabled. The ambience can be paused, and playback also pauses offscreen or when the document is hidden. Inactive chapter actions are removed from the tab order and hidden from assistive technology. Hero content stays semantic HTML above the decorative canvas.
 
 ## Verification
 
-Run `pnpm test:hero` for motion/clip-boundary tests and Chromium checks of full-screen sizing, chapter progression, header state, reverse scrolling, preload scope, keyboard navigation, mobile/reduced-motion layouts, live preference changes, and failed-frame fallbacks. Screenshots are written to `tmp/hero-*-continuous.png`. Run `pnpm build` and `pnpm lint` for production and lint checks.
+Run `npm run test:hero` for motion and clip-boundary tests and Chromium checks of full-screen sizing, chapter progression, header state, reverse scrolling, preload scope, keyboard navigation, mobile and reduced-motion layouts, live preference changes, and failed-frame fallbacks. Screenshots are written to `test-results/`.

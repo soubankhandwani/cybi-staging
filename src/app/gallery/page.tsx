@@ -17,7 +17,7 @@ export default function GalleryPage() {
         <SectionLabel index="01 / 03">Featured field note</SectionLabel>
         <div className="mt-8 grid gap-0 border border-deep-navy bg-midnight text-intelligence-white lg:grid-cols-[1.45fr_1fr]">
           <div className="relative min-h-80 overflow-hidden lg:min-h-[36rem]">
-            <Image src="/images/editorial/training-workshop.png" alt="Cyber investigation training workshop with an instructor and professional learners" fill priority sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover grayscale" />
+            <Image src="/images/editorial/training-workshop.png" alt="Cyber investigation training workshop with an instructor and professional learners" fill preload sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover grayscale" />
             <span className="absolute top-4 left-4 border border-intelligence-white/50 bg-obsidian/80 px-2 py-1 text-[9px] font-bold tracking-widest uppercase">Demo media</span>
           </div>
           <div className="flex flex-col justify-between border-t border-mist-blue/30 p-6 lg:border-t-0 lg:border-l lg:p-10">

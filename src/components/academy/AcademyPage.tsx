@@ -218,7 +218,7 @@ function AcademyHero() {
           </div>
           <div className="my-16">
             <p className="mb-5 text-[10px] font-bold tracking-[0.22em] text-command-blue uppercase dark:text-electric-blue">Learn / Examine / Analyze / Apply</p>
-            <h1 id="academy-title" className="max-w-6xl text-[clamp(3.5rem,8.3vw,9.25rem)] leading-[0.82] font-bold tracking-[-0.075em] uppercase">
+            <h1 id="academy-title" className="max-w-6xl text-[clamp(2rem,8.3vw,9.25rem)] leading-[0.82] font-bold tracking-[-0.075em] uppercase">
               Learn how<br />cyber incidents<br /><span className="text-command-blue dark:text-electric-blue">are understood.</span>
             </h1>
           </div>

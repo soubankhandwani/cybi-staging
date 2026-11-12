@@ -19,7 +19,7 @@ export function ServiceDetailHero() {
           </div>
 
           <div className="my-12">
-            <h1 id="service-detail-title" className="max-w-5xl text-[clamp(3.25rem,6.6vw,7.6rem)] leading-[0.9] font-bold tracking-[-0.065em] uppercase">
+            <h1 id="service-detail-title" className="max-w-5xl text-[clamp(2rem,6.6vw,7.6rem)] leading-[0.9] font-bold tracking-[-0.065em] uppercase">
               <span className="about-hero-line block">Understand</span>
               <span className="about-hero-line block">what happened.</span>
               <span className="about-hero-line block text-electric-blue">Establish what</span>

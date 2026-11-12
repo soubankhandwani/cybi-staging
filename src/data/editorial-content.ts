@@ -12,7 +12,7 @@ export type BlogPost = {
   displayDate: string;
   readTime: string;
   title: string;
-  dek: string;
+  subtitle: string;
   image: string;
   imageAlt: string;
   author: string;
@@ -28,7 +28,7 @@ export const blogPosts: BlogPost[] = [
     displayDate: "18 Aug 2026",
     readTime: "7 min read",
     title: "Digital evidence first response: what to preserve before analysis",
-    dek: "A practical field guide to reducing evidence loss, documenting context, and preparing devices for specialist examination.",
+    subtitle: "A practical field guide to reducing evidence loss, documenting context, and preparing devices for specialist examination.",
     image: "/images/editorial/forensics-lab.png",
     imageAlt: "Digital forensics specialist examining a storage device at a laboratory workstation",
     author: "Cyber-I Editorial Desk",
@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
     displayDate: "11 Aug 2026",
     readTime: "6 min read",
     title: "Building cyber investigation readiness before an incident",
-    dek: "The policies, decision paths, and evidence practices that help organizations move from uncertainty to an effective investigation.",
+    subtitle: "The policies, decision paths, and evidence practices that help organizations move from uncertainty to an effective investigation.",
     image: "/images/editorial/training-workshop.png",
     imageAlt: "Instructor leading a professional cyber investigation workshop",
     author: "Cyber-I Editorial Desk",
@@ -93,7 +93,7 @@ export const blogPosts: BlogPost[] = [
     displayDate: "04 Aug 2026",
     readTime: "5 min read",
     title: "Security awareness that changes everyday decisions",
-    dek: "Why practical scenarios, role-specific guidance, and a safe reporting culture matter more than a yearly compliance presentation.",
+    subtitle: "Why practical scenarios, role-specific guidance, and a safe reporting culture matter more than a yearly compliance presentation.",
     image: "/images/editorial/awareness-session.png",
     imageAlt: "Professional audience attending an institutional cyber awareness session",
     author: "Cyber-I Editorial Desk",

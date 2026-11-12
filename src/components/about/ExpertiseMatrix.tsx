@@ -5,7 +5,7 @@ import { EditorialImagePlaceholder } from "@/components/ui/EditorialImagePlaceho
 export function ExpertiseMatrix() {
   return (
     <section className="border-x border-b border-deep-navy bg-intelligence-white text-obsidian dark:bg-obsidian dark:text-intelligence-white" aria-labelledby="matrix-title">
-      <div className="grid lg:grid-cols-[42%_1fr]">
+      <div className="grid grid-cols-1 lg:grid-cols-[42%_minmax(0,1fr)]">
         <header className="border-b border-deep-navy p-7 sm:p-10 lg:border-r lg:border-b-0 lg:p-12">
           <AboutLabel>06 / Where disciplines converge</AboutLabel>
           <h2 id="matrix-title" className="mt-8 text-4xl leading-[0.96] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Not just<br />cybersecurity.</h2>

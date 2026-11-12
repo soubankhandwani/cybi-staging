@@ -40,14 +40,15 @@ test("motion eases quickly without overshoot and remains display-rate independen
   expect(reverse).toEqual({ position: 0.2, velocity: 0 });
 });
 
-test("new brand identity and discovery metadata are published consistently", async ({ page, request }) => {
+test("new brand identity and discovery metadata are published consistently", async ({ page, request, baseURL }) => {
   await page.goto("/");
 
   const headerLogo = page.getByRole("link", { name: "Cyber-I home" }).locator("img");
   await expect(headerLogo).toHaveAttribute("src", /cyber-i-logo-2026\.png/);
   await expect(page.locator('link[rel="icon"][href*="/icon"]')).toHaveCount(1);
   await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveCount(1);
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "http://localhost:3000");
+  const siteOrigin = new URL(process.env.NEXT_PUBLIC_SITE_URL || baseURL!).origin;
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/opengraph-image\.png/);
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
   expect(await page.locator('script[type="application/ld+json"]').textContent()).toContain("Cyber-I Consultancy");
@@ -58,7 +59,7 @@ test("new brand identity and discovery metadata are published consistently", asy
 
   const robotsResponse = await request.get("/robots.txt");
   expect(robotsResponse.ok()).toBe(true);
-  expect(await robotsResponse.text()).toContain("Sitemap: http://localhost:3000/sitemap.xml");
+  expect(await robotsResponse.text()).toContain(`Sitemap: ${siteOrigin}/sitemap.xml`);
 
   const sitemapResponse = await request.get("/sitemap.xml");
   expect(sitemapResponse.ok()).toBe(true);
@@ -75,7 +76,7 @@ test("clip join overlaps continuously and the final frame remains on C", () => {
   expect(getNarrative(1)).toMatchObject({ sequence: 1, story: 2, flightProgress: 1, blend: 0 });
 });
 
-test("desktop has a full-screen continuous flight, chapter copy, sticky header and keyboard CTA", async ({ page }) => {
+test("desktop has a full-screen continuous flight, chapter copy, sticky header and keyboard CTA", async ({ page }, testInfo) => {
   const errors: string[] = [];
   const requests = new Set<string>();
   page.on("pageerror", (error) => errors.push(error.message));
@@ -96,7 +97,7 @@ test("desktop has a full-screen continuous flight, chapter copy, sticky header a
   const distance = await hero(page).evaluate((el) => el.parentElement!.offsetHeight - (el as HTMLElement).offsetHeight);
   expect(distance).toBe(8100);
   await expect(hero(page).locator('[data-story][data-active="true"]')).toContainText(/See what others\s*overlook/);
-  await page.screenshot({ path: "tmp/hero-desktop-top.png" });
+  await page.screenshot({ path: testInfo.outputPath("hero-desktop-top.png") });
 
   await seek(page, 0.22);
   await page.waitForTimeout(35);
@@ -109,7 +110,7 @@ test("desktop has a full-screen continuous flight, chapter copy, sticky header a
   expect(coasting).toBeLessThan(0.22);
   await expect.poll(() => progress(page)).toBeCloseTo(0.22, 3);
   await expect(page.locator("[data-site-header]")).toHaveAttribute("data-scrolled", "false");
-  await page.screenshot({ path: "tmp/hero-desktop-continuous.png" });
+  await page.screenshot({ path: testInfo.outputPath("hero-desktop-continuous.png") });
 
   for (const [p, copy, shot] of [[0.35, "Follow the facts", "investigation"], [0.86, "Move forward", "intelligence"], [1, "Move forward", "complete"]] as const) {
     await seek(page, p);
@@ -117,7 +118,7 @@ test("desktop has a full-screen continuous flight, chapter copy, sticky header a
     await expect(hero(page).locator("canvas")).toBeVisible();
     await expect(hero(page).locator('[data-story][data-active="true"]')).toContainText(copy);
     await expect(page.locator("[data-site-header]")).toHaveAttribute("data-scrolled", p === 1 ? "true" : "false");
-    await page.screenshot({ path: `tmp/hero-desktop-${shot}.png` });
+    await page.screenshot({ path: testInfo.outputPath(`hero-desktop-${shot}.png`) });
   }
   for (const p of [0.5, 0]) {
     await seek(page, p);
@@ -132,31 +133,47 @@ test("desktop has a full-screen continuous flight, chapter copy, sticky header a
   expect(errors).toEqual([]);
 });
 
-test("mobile and reduced motion load no flight frames and remain unpinned", async ({ browser }) => {
+test("mobile and reduced motion load no flight frames and remain unpinned", async ({ browser }, testInfo) => {
   for (const mobile of [true, false]) {
     const context = await browser.newContext(mobile
       ? { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }
       : { viewport: { width: 1440, height: 900 }, reducedMotion: "reduce" });
     const page = await context.newPage();
     const frames: string[] = [];
-    page.on("request", (request) => { if (request.url().includes("/hero/frames/")) frames.push(request.url()); });
+    const ambientVideos: string[] = [];
+    page.on("request", (request) => {
+      if (request.url().includes("/hero/frames/")) frames.push(request.url());
+      if (request.url().includes("/hero/ambient-neural-loop.webm")) ambientVideos.push(request.url());
+    });
     await page.goto("/");
-    await expect(page.getByRole("link", { name: "Explore our expertise" })).toBeVisible();
-    await page.getByRole("button", { name: "Pause ambient animation" }).click();
-    await expect(page.getByRole("button", { name: "Play ambient animation" })).toBeVisible();
+    const expertise = page.getByRole("link", { name: "Explore our expertise" });
+    await expect(expertise).toBeVisible();
     if (mobile) {
+      const media = hero(page).locator("[data-hero-media]");
+      await expect(media.locator("img")).toBeInViewport({ ratio: 1 });
+      await expect(expertise).toBeInViewport({ ratio: 1 });
+      const image = await media.boundingBox();
+      const heading = await page.locator("#hero-title").boundingBox();
+      expect(image!.y + image!.height).toBeLessThan(heading!.y);
+      await expect(hero(page).locator("video")).toHaveCount(0);
       await page.getByRole("button", { name: "Open navigation" }).click();
       await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
       await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
       await page.keyboard.press("Escape");
       await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeHidden();
+    } else {
+      await expect(hero(page).locator("video")).toHaveCount(0);
+      await page.getByRole("button", { name: "Play ambient animation" }).click();
+      await page.getByRole("button", { name: "Pause ambient animation" }).click();
+      await expect(page.getByRole("button", { name: "Play ambient animation" })).toBeVisible();
     }
     await page.waitForTimeout(500);
     await expect(page.locator(".pin-spacer")).toHaveCount(0);
     await expect(hero(page).locator("canvas")).toBeHidden();
     expect(frames).toEqual([]);
+    if (mobile) expect(ambientVideos).toEqual([]);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.screenshot({ path: `tmp/hero-${mobile ? "mobile" : "reduced"}-continuous.png` });
+    await page.screenshot({ path: testInfo.outputPath(`hero-${mobile ? "mobile" : "reduced"}-continuous.png`) });
     await context.close();
   }
 });

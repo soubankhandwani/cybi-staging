@@ -1,4 +1,4 @@
-import { ModalTrigger } from "@/components/interactive/ModalTrigger";
+import { ActionLink } from "@/components/about/AboutPrimitives";
 import { Marquee } from "@/components/ui/Marquee";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceIcon } from "@/components/ui/SiteIcon";
@@ -15,8 +15,8 @@ export function ServicesSection() {
         <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading eyebrow="Capabilities" headingClassName="max-w-4xl">Capabilities built for complex challenges</SectionHeading>
           <div className="flex shrink-0 flex-wrap items-center gap-4">
-            <ModalTrigger modal="boost">Request Consultation</ModalTrigger>
-            <ModalTrigger modal="industries" variant="outline">Explore Sectors</ModalTrigger>
+            <ActionLink href="/contact">Request Consultation</ActionLink>
+            <ActionLink href="#industries" variant="outline">Explore Sectors</ActionLink>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

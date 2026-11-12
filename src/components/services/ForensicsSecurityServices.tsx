@@ -5,7 +5,7 @@ export function ForensicsService() {
   const evidenceTypes = ["Computers", "Email activity", "Internet activity", "Storage devices", "Smartphones", "File activity"];
   return (
     <section id="digital-forensics" className="scroll-mt-24 border-x border-b border-deep-navy bg-intelligence-white text-obsidian dark:bg-obsidian dark:text-intelligence-white" aria-labelledby="forensics-title">
-      <div className="grid lg:grid-cols-[1fr_42%]">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_42%]">
         <div className="p-7 sm:p-10 lg:p-12">
           <AboutLabel>02 / Digital Forensics</AboutLabel>
           <h2 id="forensics-title" className="mt-8 max-w-4xl text-4xl leading-[0.96] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Evidence needs disciplined handling before it can support a finding.</h2>
@@ -13,7 +13,7 @@ export function ForensicsService() {
           <div className="mt-10 grid border-t border-l border-deep-navy sm:grid-cols-3">
             {evidenceTypes.map((item, index) => <div key={item} className="service-reveal min-h-28 border-r border-b border-deep-navy p-5"><span className="text-[9px] font-bold text-command-blue dark:text-electric-blue">E-{String(index + 1).padStart(2, "0")}</span><p className="mt-5 text-xs font-bold uppercase">{item}</p></div>)}
           </div>
-          <ActionLink href="/services/digital-forensics" event="service_forensics_explore" className="mt-9">Explore Digital Forensics</ActionLink>
+          <ActionLink href="/contact" className="mt-9">Discuss digital forensics</ActionLink>
         </div>
         <aside className="border-t border-deep-navy bg-ice-gray p-7 text-obsidian sm:p-10 lg:border-t-0 lg:border-l lg:p-12">
           <p className="text-[10px] font-bold tracking-[0.15em] text-command-blue uppercase">Evidence ledger</p>
@@ -40,7 +40,7 @@ export function SecurityService() {
         <header className="border-b border-deep-navy p-7 sm:p-10 lg:border-r lg:border-b-0 lg:p-12">
           <AboutLabel>03 / Cyber / IT Security</AboutLabel>
           <h2 id="security-title" className="mt-8 text-4xl leading-[0.96] font-bold tracking-[-0.055em] uppercase sm:text-5xl">Find the gaps before choosing the response.</h2>
-          <ActionLink href="/services/cyber-it-security" variant="outline" event="service_security_explore" className="mt-9">Explore Cyber / IT Security</ActionLink>
+          <ActionLink href="/contact" variant="outline" className="mt-9">Discuss cyber security</ActionLink>
         </header>
         <div className="p-7 sm:p-10 lg:p-12">
           <p className="max-w-3xl text-lg leading-8 font-bold">Cyber-I’s source-supported security proposition is the evaluation of information technology and information-security architecture to identify security gaps.</p>

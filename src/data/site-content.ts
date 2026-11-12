@@ -153,5 +153,5 @@ export const modalIndustryMetrics = [
 export const contactActions = [
   { icon: "mail", title: "Drop Us a Line", description: "Need assistance? Shoot us an email, and we'll get back to you as soon as possible!", label: "Send Email", href: "mailto:help@cipherintegrity.io" },
   { icon: "message", title: "Report an Incident", description: "Start a WhatsApp chat for initial guidance. Do not send sensitive evidence until a secure route is confirmed.", label: "Open WhatsApp", href: incidentWhatsAppUrl, external: true, featured: true },
-  { icon: "calendar", title: "Schedule a Call", description: "Book a call with our experts, and let's explore how Cyber-I can help protect you.", label: "Book a Call", modal: "boost" },
+  { icon: "calendar", title: "Request a Call", description: "Tell us what you would like to discuss so we can arrange a call.", label: "Request a Call", href: "/contact?intent=call" },
 ] as const;

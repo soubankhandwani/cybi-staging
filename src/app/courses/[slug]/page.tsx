@@ -47,7 +47,7 @@ export default async function CourseDetailsPage({ params }: CoursePageProps) {
 
           <aside aria-label="Course enrolment information" className="overflow-hidden border border-[#c8c8c8] bg-white text-obsidian shadow-[0_4px_18px_rgba(0,0,0,0.24)]">
             <div className="relative aspect-[16/8]">
-              <Image src={course.image} alt={course.imageAlt} fill priority sizes="(min-width: 1024px) 360px, 100vw" className="object-cover" />
+              <Image src={course.image} alt={course.imageAlt} fill preload sizes="(min-width: 1024px) 360px, 100vw" className="object-cover" />
             </div>
             <div className="p-6">
               <Link href={`/contact?intent=course-advisor&course=${course.code}`} className="flex min-h-12 w-full items-center justify-center bg-[#0056d2] px-5 text-sm font-bold text-white transition-colors hover:bg-[#00419e]">

@@ -14,7 +14,7 @@ export function InvestigationProof() {
         <div className="p-7 sm:p-10 lg:border-r lg:p-12"><AboutLabel>09 / Institutional context</AboutLabel><h2 id="proof-detail-title" className="mt-8 text-4xl leading-[0.96] font-bold tracking-[-0.055em] uppercase sm:text-5xl">Relevant experience named in the legacy record.</h2></div>
         <div className="border-t border-deep-navy p-7 sm:p-10 lg:border-t-0 lg:p-12"><p className="text-sm leading-7 text-deep-navy">The exact nature of every relationship must be confirmed. These names are presented as neutral institutional context, not endorsements.</p><p className="mt-4 text-[9px] font-bold tracking-[0.11em] text-command-blue uppercase">[Relationship classification required]</p></div>
       </header>
-      <div className="grid lg:grid-cols-[1fr_0.72fr]">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.72fr)]">
         <div className="grid sm:grid-cols-2">
           {relevantGroups.map((group) => <article key={group.code} className="border-b border-deep-navy p-7 last:border-b-0 sm:border-r sm:border-b-0 sm:last:border-r-0 sm:p-9"><h3 className="text-[9px] leading-5 font-bold tracking-[0.12em] text-command-blue uppercase">{group.code}</h3><p className="mt-7 text-sm leading-8 font-bold">{group.organizations.join(" / ")}</p><p className="mt-5 text-[8px] leading-4 font-bold tracking-[0.1em] text-steel uppercase">Relationship type requires verification</p></article>)}
         </div>
