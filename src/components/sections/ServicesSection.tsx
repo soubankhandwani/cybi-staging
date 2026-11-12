@@ -13,10 +13,10 @@ export function ServicesSection() {
       </section>
       <section className="relative z-20 w-full border-t border-mist-blue/50 bg-intelligence-white py-16 text-obsidian select-none" id="services">
         <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-          <SectionHeading eyebrow="Capabilities" headingClassName="max-w-4xl">Capabilities built for complex challenges</SectionHeading>
+          <SectionHeading eyebrow="Capabilities" headingClassName="max-w-4xl">Services Overview</SectionHeading>
           <div className="flex shrink-0 flex-wrap items-center gap-4">
             <ActionLink href="/contact">Request Consultation</ActionLink>
-            <ActionLink href="#industries" variant="outline">Explore Sectors</ActionLink>
+            <ActionLink href="/services" variant="outline">Explore Services</ActionLink>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

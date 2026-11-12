@@ -128,5 +128,5 @@ export function getDemoPost(slug: string) {
 }
 
 export function listDemoPosts() {
-  return !process.env.MONGODB_URI?.trim() || process.env.SHOW_DEMO_BLOGS === "true" ? demoBlogPosts : [];
+  return process.env.SHOW_DEMO_BLOGS === "true" ? demoBlogPosts : [];
 }

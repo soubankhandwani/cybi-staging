@@ -8,7 +8,7 @@ export function ExpertiseMatrix() {
       <div className="grid grid-cols-1 lg:grid-cols-[42%_minmax(0,1fr)]">
         <header className="border-b border-deep-navy p-7 sm:p-10 lg:border-r lg:border-b-0 lg:p-12">
           <AboutLabel>06 / Where disciplines converge</AboutLabel>
-          <h2 id="matrix-title" className="mt-8 text-4xl leading-[0.96] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Not just<br />cybersecurity.</h2>
+          <h2 id="matrix-title" className="mt-8 text-4xl leading-[0.96] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Expertise across disciplines</h2>
           <p className="mt-8 max-w-lg text-sm leading-7 text-deep-navy dark:text-mist-blue">
             Cyber-I’s distinction is the connection between technical evidence, investigative thinking, security context, legal understanding and professional training.
           </p>

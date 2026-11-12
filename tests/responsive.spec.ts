@@ -35,10 +35,13 @@ test("landscape navigation reaches every link and unlocks scrolling on resize", 
 });
 
 test("course enquiry keeps the selected programme", async ({ page }) => {
-  await page.goto("/courses/basic-course-cyber-investigation");
+  await page.goto("/courses");
+  await page.getByLabel("Course type").selectOption("Capsule");
+  await page.getByRole("searchbox", { name: "Search programmes" }).fill("Deepfake");
+  await page.getByRole("link", { name: "View course details for Deepfake Detection" }).click();
   await page.getByRole("link", { name: "Ask about this course" }).click();
-  await expect(page.getByLabel("Enquiry type")).toHaveValue("Course / Training");
-  await expect(page.getByLabel("How can we help?")).toHaveValue(/Cyber Investigation/i);
+  await expect(page.getByLabel("Service required")).toHaveValue("Course / Training");
+  await expect(page.getByLabel("Message")).toHaveValue(/Deepfake Detection/i);
 });
 
 test("industry tabs support keyboard navigation", async ({ page }) => {

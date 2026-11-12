@@ -15,13 +15,13 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
-  if (slug !== "cyber-crime-investigation") return { title: "Service Details | Cyber-I Consultancy" };
+  if (slug !== "cyber-crime-investigation") return { title: "Service Details | Cyber-I Consultancy Services" };
   return {
-    title: "Cyber Crime Investigation Services | Cyber-I Consultancy",
+    title: "Cybercrime Investigation Services | Cyber-I Consultancy Services",
     description: "Explore Cyber-I's cybercrime investigation capabilities for fraud, hacking, data theft, Business Email Compromise and other technology-assisted incidents.",
     alternates: { canonical: "/services/cyber-crime-investigation" },
     openGraph: {
-      title: "Cyber Crime Investigation | Cyber-I Consultancy",
+      title: "Cybercrime Investigation | Cyber-I Consultancy Services",
       description: "Understand incidents, identify relevant digital evidence and establish supported findings with Cyber-I's investigation capability.",
       type: "website",
       url: "/services/cyber-crime-investigation",
@@ -43,7 +43,7 @@ export default async function ServiceDetailsPage({ params }: ServicePageProps) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "/" },
       { "@type": "ListItem", position: 2, name: "Services", item: "/services" },
-      { "@type": "ListItem", position: 3, name: "Cyber Crime Investigation", item: "/services/cyber-crime-investigation" },
+      { "@type": "ListItem", position: 3, name: "Cybercrime Investigation", item: "/services/cyber-crime-investigation" },
     ],
   };
 

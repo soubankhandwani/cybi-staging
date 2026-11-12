@@ -9,8 +9,7 @@ export function InvestigationExpertise() {
         <article className="p-7 sm:p-10 lg:p-12">
           <AboutLabel>06 / Relevant expertise</AboutLabel>
           <h2 id="expertise-detail-title" className="mt-8 max-w-4xl text-4xl leading-[0.96] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Investigation requires technical and procedural context.</h2>
-          <p className="mt-7 max-w-3xl text-sm leading-7 text-deep-navy">Legacy material states that Cyber-I’s team includes former Mumbai Police Cyber Crime Investigation Cell and Cyber Lab personnel, retired police officials, practicing advocates and cyber forensic specialists.</p>
-          <p className="mt-5 text-[9px] leading-5 font-bold tracking-[0.12em] text-command-blue uppercase">[Team backgrounds and individual credentials require production verification]</p>
+          <p className="mt-7 max-w-3xl text-sm leading-7 text-deep-navy">Our approach combines digital analysis and evidence examination with an understanding of investigative and legal procedures.</p>
           <div className="mt-10 grid gap-0 border-t border-l border-deep-navy sm:grid-cols-2">
             {["Operational investigation context", "Digital forensic expertise", "Technical + legal understanding", "Evidence-oriented work"].map((item, index) => <div key={item} className="service-detail-reveal min-h-28 border-r border-b border-deep-navy p-5"><span className="text-[9px] font-bold text-command-blue">0{index + 1}</span><p className="mt-5 text-xs font-bold uppercase">{item}</p></div>)}
           </div>
@@ -36,7 +35,7 @@ export function InvestigationExpertise() {
 }
 
 export function AudienceAndUseCases() {
-  const audiences = ["Corporations & enterprises", "Government & law enforcement", "Financial institutions", "Institutions", "Individuals affected by cybercrime"];
+  const audiences = ["Corporate organisations", "Government departments", "Law enforcement", "Legal professionals", "Financial institutions", "Educational institutions"];
   const useCases = ["Online financial fraud", "Business Email Compromise", "Data theft", "Hacking and intrusion", "Phishing and extortion", "Digital impersonation"];
 
   return (
@@ -49,7 +48,7 @@ export function AudienceAndUseCases() {
         </article>
         <article className="p-7 sm:p-10 lg:p-12">
           <AboutLabel>08 / Investigation contexts</AboutLabel>
-          <h2 className="mt-8 text-3xl leading-none font-bold tracking-[-0.045em] uppercase sm:text-4xl">Cases named in the source material.</h2>
+          <h2 className="mt-8 text-3xl leading-none font-bold tracking-[-0.045em] uppercase sm:text-4xl">Examples of technology-enabled incidents.</h2>
           <div className="mt-8 grid border-t border-l border-deep-navy sm:grid-cols-2 lg:grid-cols-3">{useCases.map((useCase, index) => <div key={useCase} className="service-detail-reveal min-h-32 border-r border-b border-deep-navy p-5"><span className="text-[9px] font-bold text-command-blue dark:text-electric-blue">C-{String(index + 1).padStart(2, "0")}</span><h3 className="mt-5 text-xs font-bold uppercase">{useCase}</h3></div>)}</div>
         </article>
       </div>

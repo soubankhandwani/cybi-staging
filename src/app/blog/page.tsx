@@ -6,7 +6,7 @@ import { BlogCard, EditorialHero, FinalCTA, OutlineLink, SectionLabel, TextLink 
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = { title: "Insights | Cyber-I", description: "Practical field notes on cyber investigation, digital forensics, security readiness, cyber law, risk, and professional learning." };
+export const metadata: Metadata = { title: "Insights | Cyber-I", description: "Articles, case studies, expert perspectives and updates on cybercrime, digital forensics, cybersecurity, digital evidence and cyber law." };
 
 type BlogPageProps = { searchParams: Promise<{ category?: string | string[] }> };
 
@@ -20,7 +20,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const [featured, ...recent] = visiblePosts;
   return (
     <main className="my-4 sm:my-6 md:my-8">
-      <EditorialHero eyebrow="Insights / Field notes" index="10" title={<>Useful thinking for <span className="text-command-blue dark:text-electric-blue">decisive</span> moments.</>} description="Practical perspectives on investigation, evidence, security, and learning—written to help professionals ask better questions and take responsible next steps." actions={<>{featured && <TextLink href="#featured">Read featured insight</TextLink>}<OutlineLink href="/services">Explore services</OutlineLink></>} />
+      <EditorialHero eyebrow="Insights / Field notes" index="10" title="Insights" description="Stay informed with articles, case studies, expert perspectives, and industry updates on cybercrime, digital forensics, cybersecurity, digital evidence, cyber law, emerging technologies, and investigative best practices." actions={<>{featured && <TextLink href="#featured">Read featured insight</TextLink>}<OutlineLink href="/services">Explore services</OutlineLink></>} />
 
       <nav aria-label="Insight categories" className="border-x border-b border-deep-navy"><div className="flex overflow-x-auto"><Link href="/blog" aria-current={!category ? "page" : undefined} className={`whitespace-nowrap border-r border-deep-navy px-5 py-4 text-[10px] font-bold tracking-[0.14em] uppercase ${!category ? "bg-midnight text-electric-blue" : "text-steel hover:bg-ice-gray dark:text-mist-blue dark:hover:bg-midnight"}`}>All insights</Link>{categories.map((item) => <Link key={item} href={`/blog?category=${encodeURIComponent(item)}`} aria-current={category === item ? "page" : undefined} className={`whitespace-nowrap border-r border-deep-navy px-5 py-4 text-[10px] font-bold tracking-[0.14em] uppercase ${category === item ? "bg-midnight text-electric-blue" : "text-steel hover:bg-ice-gray dark:text-mist-blue dark:hover:bg-midnight"}`}>{item}</Link>)}</div></nav>
 

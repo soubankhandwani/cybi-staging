@@ -30,7 +30,7 @@ New uploads are decoded, re-encoded and stored in MongoDB's `blogImages` collect
 - Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin before `npm run build`. Use the same origin at runtime for admin and enquiry submissions.
 - Use a Node.js deployment with MongoDB network access. Use `npm ci`, `npm run build` and `npm run start`. For a pnpm deployment use `pnpm install --frozen-lockfile` and the equivalent build and start commands.
 - When the ingress overwrites a header with one verified client IP, set `TRUSTED_CLIENT_IP_HEADER` to its name. Without a trusted header, visitors share the IP rate-limit bucket.
-- With MongoDB configured, sample blog posts are hidden by default. `SHOW_DEMO_BLOGS=true` enables samples for staging.
+- Sample blog posts are hidden by default. `SHOW_DEMO_BLOGS=true` enables samples for staging.
 - Before launch, supply the approved privacy and terms copy and replace or remove the staged testimonials, imagery, and relationship claims identified in the public copy.
 
 Run `npm run lint` and `npm test` for lint and Chromium regression tests. Install Chromium with `npx playwright install chromium` if needed. Set `PLAYWRIGHT_BASE_URL` to run the tests against a running build.

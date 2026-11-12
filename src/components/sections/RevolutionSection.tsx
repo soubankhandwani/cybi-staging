@@ -8,10 +8,10 @@ export function RevolutionSection() {
       <div className="noise-layer pointer-events-none absolute inset-0 z-0 opacity-[0.05]" />
       <span className="absolute top-0 left-0 z-10 h-1 w-32 border-b border-command-blue bg-electric-blue" /><span className="absolute top-0 right-0 z-10 h-1 w-32 border-b border-command-blue bg-electric-blue" />
       <div className="relative z-10 mx-auto mb-8 max-w-4xl px-6 text-center">
-        <h2 className="text-[8vw] leading-[1.12] font-black tracking-tight uppercase sm:text-[5vw] md:text-[3.2vw]">Join the <span className="inline-block -rotate-1 border-2 border-command-blue bg-signal-blue px-2 py-0.5 text-intelligence-white shadow-[2px_2px_0_#0B121C]">cybersecurity</span><br />revolution and <span className="underline decoration-electric-blue decoration-4 underline-offset-4">safeguard</span><br />your business today</h2>
+        <h2 className="text-[8vw] leading-[1.12] font-black tracking-tight uppercase sm:text-[5vw] md:text-[3.2vw]">Turn digital evidence<br />into <span className="underline decoration-electric-blue decoration-4 underline-offset-4">meaningful intelligence</span></h2>
       </div>
       <div className="relative z-10 mb-10 flex flex-wrap items-center justify-center gap-4">
-        <ActionLink href="/services#cyber-it-security">Explore cyber security</ActionLink>
+        <ActionLink href="/services#cyber-it-security">Explore cybersecurity</ActionLink>
         <ActionLink href="/contact" variant="outline">Contact Cyber-I</ActionLink>
       </div>
       <div className="relative z-0 flex w-full flex-col items-center overflow-hidden border-t border-mist-blue/50 bg-intelligence-white pt-8 dark:border-mist-blue/10 dark:bg-obsidian">

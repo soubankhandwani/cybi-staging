@@ -1,35 +1,30 @@
 import type { Metadata } from "next";
-import { Building2, Landmark, Scale, School, ShieldCheck } from "lucide-react";
-import { demoClients } from "@/data/editorial-content";
+import { IndustryIcon } from "@/components/ui/SiteIcon";
+import { industries } from "@/data/industries";
 import { EditorialHero, FinalCTA, OutlineLink, SectionLabel, TextLink } from "@/components/editorial/PagePrimitives";
 
 export const metadata: Metadata = { title: "Clients & Institutional Experience | Cyber-I", description: "Cyber-I capability for government, law enforcement, financial, legal, education, and enterprise environments." };
 
-const sectors = [
-  { icon: Landmark, title: "Government & public sector", text: "Investigation, awareness, and capacity-building contexts that require controlled handling and clear accountability." },
-  { icon: ShieldCheck, title: "Law enforcement", text: "Digital evidence, cybercrime investigation, and practical training aligned with operational realities." },
-  { icon: Building2, title: "Enterprise & finance", text: "Security assessment, incident investigation, and intelligence-led support for business stakeholders." },
-  { icon: Scale, title: "Legal professionals", text: "Technical context around cyber law, digital evidence, and technology-enabled disputes." },
-  { icon: School, title: "Education & training", text: "Applied learning for institutions, professionals, and emerging investigators." },
-];
-
 export default function ClientsPage() {
   return (
     <main className="my-4 sm:my-6 md:my-8">
-      <EditorialHero eyebrow="Clients / Institutional experience" index="08" title={<>Capability for <span className="text-command-blue dark:text-electric-blue">serious</span> environments.</>} description="Cyber-I supports organizations where evidence, security, professional judgment, and confidentiality matter. The demo logo wall below is a layout preview, not a claim of endorsement." actions={<><TextLink href="/contact">Discuss your requirement</TextLink><OutlineLink href="#sectors">Sectors served</OutlineLink></>} />
+      <EditorialHero eyebrow="Clients / Institutional experience" index="08" title={<>Organisations We Have <span className="text-command-blue dark:text-electric-blue">Worked With</span></>} description="We are privileged to have collaborated with organisations across law enforcement, government, financial services, corporate sectors, educational institutions, and legal practice." actions={<><TextLink href="/contact">Discuss your requirement</TextLink><OutlineLink href="#sectors">Sectors served</OutlineLink></>} />
 
       <section className="border-x border-b border-deep-navy p-5 sm:p-8 lg:p-12">
-        <SectionLabel index="01 / 03">Relationship index</SectionLabel>
-        <div className="mt-8 border border-command-blue bg-command-blue p-3 text-center text-[10px] font-bold tracking-[0.16em] text-intelligence-white uppercase">Demo client marks · Replace only with verified, approved relationships before publication</div>
-        <div className="grid gap-px border-x border-b border-deep-navy bg-deep-navy sm:grid-cols-2 lg:grid-cols-4">
-          {demoClients.map((client, index) => <div key={client.name} className="group flex min-h-56 flex-col justify-between bg-intelligence-white p-5 transition-colors hover:bg-ice-gray dark:bg-obsidian dark:hover:bg-midnight"><div className="flex items-start justify-between"><span className="grid h-14 w-14 place-items-center border-2 border-deep-navy text-xl font-bold text-command-blue dark:border-mist-blue dark:text-electric-blue">{client.mark}</span><span className="text-[9px] font-bold tracking-widest text-steel">0{index + 1}</span></div><div><h2 className="text-sm font-bold uppercase">{client.name}</h2><p className="mt-2 text-[9px] tracking-widest text-steel uppercase dark:text-mist-blue">{client.sector}</p></div></div>)}
-        </div>
+        <SectionLabel index="01 / 03">Client organisations</SectionLabel>
+        <p className="mt-8 border border-deep-navy p-6 text-sm text-steel dark:text-mist-blue">Client profiles will be added as they become available.</p>
       </section>
 
       <section id="sectors" className="border-x border-b border-deep-navy px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <SectionLabel index="02 / 03">Sectors served</SectionLabel>
         <div className="mt-8 divide-y divide-deep-navy border-y border-deep-navy">
-          {sectors.map((sector, index) => { const Icon = sector.icon; return <article key={sector.title} className="grid gap-5 py-7 md:grid-cols-[5rem_1fr_1fr] md:items-center"><div className="flex items-center gap-4"><span className="text-[10px] font-bold text-steel">0{index + 1}</span><Icon className="h-5 w-5 text-command-blue dark:text-electric-blue" /></div><h2 className="text-xl font-bold tracking-[-0.03em] uppercase sm:text-2xl">{sector.title}</h2><p className="text-sm leading-6 text-steel dark:text-mist-blue">{sector.text}</p></article>; })}
+          {industries.map((sector) => (
+            <article key={sector.id} className="grid gap-5 py-7 md:grid-cols-[5rem_1fr_1fr] md:items-center">
+              <IndustryIcon name={sector.icon} className="h-5 w-5 text-command-blue dark:text-electric-blue" />
+              <h2 className="text-xl font-bold tracking-[-0.03em] uppercase sm:text-2xl">{sector.name}</h2>
+              <p className="text-sm leading-6 text-steel dark:text-mist-blue">{sector.description[0]}</p>
+            </article>
+          ))}
         </div>
       </section>
 

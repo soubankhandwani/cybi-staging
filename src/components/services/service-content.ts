@@ -1,10 +1,10 @@
-export const serviceNavigation = [
-  { number: "01", label: "Cyber Crime Investigation", href: "#cyber-crime-investigation" },
-  { number: "02", label: "Digital Forensics", href: "#digital-forensics" },
-  { number: "03", label: "Cyber / IT Security", href: "#cyber-it-security" },
-  { number: "04", label: "Cyber Law & Digital Evidence", href: "#cyber-law-digital-evidence" },
-  { number: "05", label: "Institutional Training", href: "#institutional-training" },
-] as const;
+import { services } from "@/data/site-content";
+
+export const serviceNavigation = services.map((service, index) => ({
+  number: String(index + 1).padStart(2, "0"),
+  label: service.title,
+  href: "#" + service.id,
+}));
 
 export const engagementSteps = [
   { number: "01", title: "Understand", description: "Establish the requirement, incident or objective." },
@@ -14,9 +14,10 @@ export const engagementSteps = [
 ] as const;
 
 export const differentiators = [
-  ["01", "Practitioner experience", "Legacy material references operational cybercrime, cyber lab, policing, legal and forensic backgrounds."],
-  ["02", "Investigation + technology + law", "Connected disciplines help digital evidence remain understood in investigative and legal context."],
-  ["03", "Evidence-oriented expertise", "The focus extends beyond generic security consulting to incidents, evidence and findings."],
-  ["04", "Institutional experience", "Government, enterprise and training organizations appear in the legacy record, subject to relationship verification."],
-  ["05", "Services + training", "Operational capability is supported by professional and institutional education pathways."],
+  ["01", "Investigation-Centric Approach", "Our investigative work is grounded in evidence, intelligence gathering and digital analysis."],
+  ["02", "Multidisciplinary Expertise", "We bring together investigation, digital forensics, cybersecurity and techno-legal consulting."],
+  ["03", "Practical Industry Experience", "We work with organisations in law enforcement, finance, government, business and education."],
+  ["04", "Legally Defensible Solutions", "We consider legal procedures and evidentiary standards alongside technical findings."],
+  ["05", "Capacity Building Focus", "Our training uses practical case studies and investigative scenarios."],
+  ["06", "Trusted Professional Support", "We support organisations and professionals with specialist consultation and expert opinions."],
 ] as const;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { companyName } from "@/data/company";
 import { DualPathCTA, FinalContactCTA } from "@/components/about/AboutCTAs";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AudienceNavigator } from "@/components/about/AudienceNavigator";
@@ -9,13 +10,13 @@ import { CompanyTimeline, MissionVision } from "@/components/about/MissionTimeli
 import { LeadershipSection, OperatingPrinciples } from "@/components/about/PrinciplesExpertise";
 
 export const metadata: Metadata = {
-  title: "About Cyber-I Consultancy | Investigation, Forensics, Security & Cyber Law",
+  title: "About Cyber-I Consultancy Services",
   description:
-    "Learn how Cyber-I brings together cybercrime investigation, digital forensics, cybersecurity, cyber law and professional training in Mumbai, India.",
+    "Learn how Cyber-I Consultancy Services brings together cybercrime investigation, digital forensics, cybersecurity and techno-legal consulting in Mumbai, India.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Cyber-I Consultancy",
-    description: "Information. Investigation. Intelligence. Explore Cyber-I's multidisciplinary approach to complex digital matters.",
+    title: "About Cyber-I Consultancy Services",
+    description: "Explore Cyber-I’s multidisciplinary approach to strengthening investigations, improving organisational resilience and building technical capability.",
     type: "website",
     url: "/about",
   },
@@ -25,7 +26,7 @@ export default function AboutPage() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Cyber-I Consultancy",
+    name: companyName,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Mumbai",

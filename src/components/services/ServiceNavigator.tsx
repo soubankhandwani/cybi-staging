@@ -35,11 +35,11 @@ export function ServiceNavigator() {
 
   return (
     <nav aria-label="Service navigator" className="sticky top-20 z-30 border-x border-b border-deep-navy bg-intelligence-white/95 backdrop-blur-md dark:bg-obsidian/95" id="capabilities">
-      <ol ref={list} className="custom-scrollbar flex overflow-x-auto lg:grid lg:grid-cols-5">
+      <ol ref={list} className="custom-scrollbar flex overflow-x-auto xl:grid xl:grid-cols-6">
         {serviceNavigation.map((item) => {
           const active = activeId === item.href.slice(1);
           return (
-            <li key={item.href} className="min-w-[235px] border-r border-deep-navy last:border-r-0 lg:min-w-0">
+            <li key={item.href} className="min-w-[235px] border-r border-deep-navy last:border-r-0 xl:min-w-0">
               <a href={item.href} aria-current={active ? "location" : undefined} className={`capability-index-link flex min-h-20 items-center gap-4 px-5 py-4 text-[10px] font-bold tracking-[0.1em] uppercase transition-colors ${active ? "bg-command-blue text-white" : "text-deep-navy hover:bg-ice-gray dark:text-mist-blue dark:hover:bg-midnight"}`}>
                 <span className={active ? "text-electric-blue" : "text-command-blue dark:text-electric-blue"}>{item.number}</span>
                 <span>{item.label}</span>

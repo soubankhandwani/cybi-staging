@@ -28,7 +28,7 @@ export function OperatingPrinciples() {
 }
 
 export function LeadershipSection() {
-  const backgrounds = ["Former cybercrime cell personnel", "Former cyber lab personnel", "Practicing advocates", "Retired police officials", "Cyber forensic specialists"];
+  const backgrounds = ["Cybercrime investigation", "Digital forensics", "Cybersecurity", "Techno-legal consulting"];
 
   return (
     <section className="border-x border-b border-deep-navy bg-intelligence-white text-obsidian" aria-labelledby="leadership-title">
@@ -37,7 +37,7 @@ export function LeadershipSection() {
           <AboutLabel>08 / Expertise behind the work</AboutLabel>
           <h2 id="leadership-title" className="mt-8 max-w-4xl text-4xl leading-[0.98] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Practitioner context matters.</h2>
           <p className="mt-7 max-w-2xl text-sm leading-7 text-deep-navy">
-            Legacy material states that Cyber-I’s team includes people from cybercrime investigation, cyber lab, legal, policing and forensic backgrounds. These are material trust claims and require client verification before publication.
+            Cyber-I brings technical expertise together with an understanding of legal procedures, evidentiary standards and operational realities.
           </p>
           <div className="mt-10 grid border-t border-l border-deep-navy sm:grid-cols-2">
             {backgrounds.map((background, index) => (

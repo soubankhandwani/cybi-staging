@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { AcademyPage } from "@/components/academy/AcademyPage";
 
 export const metadata: Metadata = {
-  title: "Cyber-I Academy | Cyber Investigation, Forensics & Cyber Law Courses",
-  description: "Explore professional learning pathways in cyber investigation, digital forensics, cyber law and digital evidence at Cyber-I Academy.",
+  title: "Certification and Capsule Courses | Cyber-I",
+  description: "Explore certification and capsule courses from Cyber-I Consultancy Services, including CEH, CHFI and specialist investigation and forensics courses.",
   openGraph: {
     title: "Cyber-I Academy",
-    description: "Find the right professional programme in cyber investigation, digital forensics or cyber law and digital evidence.",
+    description: "Build investigative capability through practical case studies and real-world scenarios.",
     type: "website",
   },
 };

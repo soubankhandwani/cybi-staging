@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AboutLabel, ActionLink, CornerMarks } from "@/components/about/AboutPrimitives";
+import { companyIntroduction } from "@/data/company";
 import { TechnicalGrid } from "@/components/ui/TechnicalGrid";
 
 export function ServicesHero() {
@@ -24,7 +25,7 @@ export function ServicesHero() {
           </div>
           <div className="grid gap-8 border-t border-mist-blue pt-7 xl:grid-cols-[1fr_auto] xl:items-end dark:border-deep-navy">
             <p className="max-w-3xl text-sm leading-7 font-bold text-deep-navy dark:text-mist-blue md:text-base">
-              Cyber-I connects cybercrime investigation, digital forensics, cybersecurity and cyber-law expertise to help clients understand incidents, uncover evidence, identify risk and determine an appropriate next step.
+              {companyIntroduction}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <ActionLink href="#capabilities" event="services_hero_explore">Explore Capabilities ↓</ActionLink>
@@ -50,7 +51,7 @@ export function ServicesHero() {
                 </div>
               ))}
             </div>
-            <p className="max-w-xs text-[10px] leading-6 font-bold tracking-[0.12em] text-mist-blue uppercase">Investigation / Forensics / Security / Law</p>
+            <p className="max-w-xs text-[10px] leading-6 font-bold tracking-[0.12em] text-mist-blue uppercase">Investigation / Forensics / Cybersecurity / Techno-Legal / Training / Advisory</p>
           </div>
         </aside>
       </div>

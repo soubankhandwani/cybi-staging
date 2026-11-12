@@ -96,7 +96,7 @@ test("desktop has a full-screen continuous flight, chapter copy, sticky header a
   expect([...requests].sort()).toEqual(["a-to-b", "b-to-c"]);
   const distance = await hero(page).evaluate((el) => el.parentElement!.offsetHeight - (el as HTMLElement).offsetHeight);
   expect(distance).toBe(8100);
-  await expect(hero(page).locator('[data-story][data-active="true"]')).toContainText(/See what others\s*overlook/);
+  await expect(hero(page).locator('[data-story][data-active="true"]')).toContainText("Strengthening Digital Investigations. Securing Organisations. Building Capability.");
   await page.screenshot({ path: testInfo.outputPath("hero-desktop-top.png") });
 
   await seek(page, 0.22);
@@ -112,7 +112,7 @@ test("desktop has a full-screen continuous flight, chapter copy, sticky header a
   await expect(page.locator("[data-site-header]")).toHaveAttribute("data-scrolled", "false");
   await page.screenshot({ path: testInfo.outputPath("hero-desktop-continuous.png") });
 
-  for (const [p, copy, shot] of [[0.35, "Follow the facts", "investigation"], [0.86, "Move forward", "intelligence"], [1, "Move forward", "complete"]] as const) {
+  for (const [p, copy, shot] of [[0.35, "Evidence-driven investigations.", "investigation"], [0.86, "Build practical capability.", "intelligence"], [1, "Build practical capability.", "complete"]] as const) {
     await seek(page, p);
     await expect.poll(() => progress(page)).toBeCloseTo(p, 3);
     await expect(hero(page).locator("canvas")).toBeVisible();

@@ -8,6 +8,7 @@ import { RevolutionSection } from "@/components/sections/RevolutionSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { WhyCyberISection } from "@/components/sections/WhyCyberISection";
+import { companyContact } from "@/data/company";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -23,21 +24,24 @@ export default function HomePage() {
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/images/brand/cyber-i-site-icon-2026.png`,
-    email: "help@cipherintegrity.io",
+    email: companyContact.emails,
+    telephone: companyContact.phones.map(({ href }) => href.slice(4)),
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Mumbai",
-      addressRegion: "Maharashtra",
+      streetAddress: companyContact.office.street,
+      addressLocality: companyContact.office.city,
+      addressRegion: companyContact.office.region,
+      postalCode: companyContact.office.postalCode,
       addressCountry: "IN",
     },
     areaServed: "IN",
     knowsAbout: [
       "Cybercrime investigation",
       "Digital forensics",
-      "Information analysis",
-      "Cyber law",
-      "Cybersecurity training",
-      "Strategic risk advisory",
+      "Cybersecurity",
+      "Techno-legal consulting",
+      "Training and capacity building",
+      "Cyber advisory services",
     ],
   };
 

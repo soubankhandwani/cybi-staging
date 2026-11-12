@@ -4,6 +4,8 @@ import { experts } from "@/data/site-content";
 import { cn } from "@/lib/cn";
 
 export function TeamSection() {
+  if (!experts.length) return null;
+
   return (
     <section className="relative z-20 w-full border-t border-mist-blue/50 bg-intelligence-white py-16 text-obsidian select-none" id="team">
       <h2 className="sr-only">Our Leadership</h2>

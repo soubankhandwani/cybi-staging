@@ -115,20 +115,3 @@ export const galleryItems = [
   { category: "Forensics", image: "/images/editorial/forensics-lab.png", title: "Digital media examination", caption: "Demo image · Careful collection, preservation, and examination.", featured: false },
   { category: "Events", image: "/images/editorial/awareness-session.png", title: "Industry knowledge exchange", caption: "Demo image · Structured discussion around digital risk and response.", featured: false },
 ];
-
-export const demoTestimonials = [
-  { type: "Organization", quote: "Placeholder testimonial describing how a structured investigation process created clarity, protected sensitive information, and helped stakeholders make informed decisions.", name: "Verified client name required", role: "Role and organization required", code: "PROOF_PLACEHOLDER // 01" },
-  { type: "Learner", quote: "Placeholder testimonial describing a practical learning experience, relevant case scenarios, and greater confidence applying digital investigation concepts.", name: "Verified learner name required", role: "Course and cohort required", code: "PROOF_PLACEHOLDER // 02" },
-  { type: "Training partner", quote: "Placeholder testimonial describing responsive coordination, audience-appropriate delivery, and a useful institutional training outcome.", name: "Verified partner name required", role: "Institution and role required", code: "PROOF_PLACEHOLDER // 03" },
-];
-
-export const demoClients = [
-  { mark: "PS", name: "Public Sector Institution", sector: "Government · Demo mark" },
-  { mark: "LE", name: "Law Enforcement Academy", sector: "Training · Demo mark" },
-  { mark: "FS", name: "Financial Services Group", sector: "Finance · Demo mark" },
-  { mark: "ED", name: "Education Institution", sector: "Education · Demo mark" },
-  { mark: "EN", name: "Enterprise Network", sector: "Corporate · Demo mark" },
-  { mark: "LP", name: "Legal Practice", sector: "Legal · Demo mark" },
-  { mark: "TI", name: "Technology Institution", sector: "Technology · Demo mark" },
-  { mark: "NP", name: "Nonprofit Programme", sector: "Social sector · Demo mark" },
-];

@@ -1,3 +1,4 @@
+import { serviceDescriptions } from "@/data/site-content";
 import { AboutLabel, ActionLink } from "@/components/about/AboutPrimitives";
 import { EditorialImagePlaceholder } from "@/components/ui/EditorialImagePlaceholder";
 import { TechnicalGrid } from "@/components/ui/TechnicalGrid";
@@ -10,9 +11,9 @@ export function InvestigationService() {
           <TechnicalGrid large className="opacity-20" />
           <div className="relative lg:sticky lg:top-28">
             <AboutLabel inverse>01 / Primary capability</AboutLabel>
-            <h2 id="investigation-title" className="mt-8 text-4xl leading-[0.95] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Cyber crime investigation.</h2>
-            <p className="mt-7 max-w-lg text-sm leading-7 text-mist-blue">Understand what happened, identify relevant digital evidence, establish findings and determine the next appropriate action.</p>
-            <ActionLink href="/services/cyber-crime-investigation" variant="light" event="service_investigation_explore" className="mt-9">Explore Cyber Crime Investigation</ActionLink>
+            <h2 id="investigation-title" className="mt-8 text-4xl leading-[0.95] font-bold tracking-[-0.055em] uppercase sm:text-6xl">Cybercrime Investigation</h2>
+            <p className="mt-7 max-w-lg text-sm leading-7 text-mist-blue">{serviceDescriptions.investigation}</p>
+            <ActionLink href="/services/cyber-crime-investigation" variant="light" event="service_investigation_explore" className="mt-9">Explore Cybercrime Investigation</ActionLink>
             <EditorialImagePlaceholder
               code="INV / FIELD_RECORD / 01"
               subject="Recommended subject: a real Cyber-I investigator reviewing digital evidence in a controlled workspace."

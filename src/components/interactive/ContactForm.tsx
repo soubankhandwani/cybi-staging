@@ -9,11 +9,12 @@ interface ContactFormData {
   enquiryType: string;
   message: string;
   name: string;
+  organisation: string;
   phone: string;
   website: string;
 }
 
-const initialFormData: ContactFormData = { email: "", enquiryType: "", message: "", name: "", phone: "", website: "" };
+const initialFormData: ContactFormData = { email: "", enquiryType: "", message: "", name: "", organisation: "", phone: "", website: "" };
 
 export function ContactForm({ initialEnquiry = "", initialMessage = "" }: { initialEnquiry?: string; initialMessage?: string }) {
   const [formData, setFormData] = useState({ ...initialFormData, enquiryType: initialEnquiry, message: initialMessage });
@@ -66,17 +67,18 @@ export function ContactForm({ initialEnquiry = "", initialMessage = "" }: { init
       {error && <p role="alert" className="border-l-4 border-red-500 bg-red-50 p-4 text-sm text-red-900">{error}</p>}
       <div className="grid gap-5 sm:grid-cols-2">
         <FormField id="contact-name" label="Name" required><input id="contact-name" name="name" autoComplete="name" required minLength={2} maxLength={contactLimits.name} value={formData.name} onChange={(event) => updateField("name", event.target.value)} className="contact-input" /></FormField>
-        <FormField id="contact-enquiry" label="Enquiry type" required>
-          <select id="contact-enquiry" name="enquiryType" required value={formData.enquiryType} onChange={(event) => updateField("enquiryType", event.target.value)} className="contact-input appearance-none">
-            <option value="" disabled>Select one</option>{enquiryTypes.map((type) => <option key={type}>{type}</option>)}
-          </select>
-        </FormField>
+        <FormField id="contact-organisation" label="Organisation (optional)"><input id="contact-organisation" name="organisation" autoComplete="organization" maxLength={contactLimits.organisation} value={formData.organisation} onChange={(event) => updateField("organisation", event.target.value)} className="contact-input" /></FormField>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <FormField id="contact-email" label="Email" required><input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={contactLimits.email} value={formData.email} onChange={(event) => updateField("email", event.target.value)} className="contact-input" /></FormField>
-        <FormField id="contact-phone" label="Phone (optional)"><input id="contact-phone" name="phone" type="tel" autoComplete="tel" maxLength={contactLimits.phone} value={formData.phone} onChange={(event) => updateField("phone", event.target.value)} className="contact-input" /></FormField>
+        <FormField id="contact-phone" label="Contact number (optional)"><input id="contact-phone" name="phone" type="tel" autoComplete="tel" maxLength={contactLimits.phone} value={formData.phone} onChange={(event) => updateField("phone", event.target.value)} className="contact-input" /></FormField>
       </div>
-      <FormField id="contact-message" label="How can we help?" required hint="Please avoid sharing passwords or highly sensitive evidence through this form."><textarea id="contact-message" name="message" required rows={7} minLength={20} maxLength={contactLimits.message} aria-describedby="contact-message-hint" value={formData.message} onChange={(event) => updateField("message", event.target.value)} className="contact-input resize-y normal-case" /></FormField>
+      <FormField id="contact-enquiry" label="Service required" required>
+          <select id="contact-enquiry" name="enquiryType" required value={formData.enquiryType} onChange={(event) => updateField("enquiryType", event.target.value)} className="contact-input appearance-none">
+            <option value="" disabled>Select one</option>{enquiryTypes.map((type) => <option key={type}>{type}</option>)}
+          </select>
+      </FormField>
+      <FormField id="contact-message" label="Message" required hint="Please avoid sharing passwords or highly sensitive evidence through this form."><textarea id="contact-message" name="message" required rows={7} minLength={20} maxLength={contactLimits.message} aria-describedby="contact-message-hint" value={formData.message} onChange={(event) => updateField("message", event.target.value)} className="contact-input resize-y normal-case" /></FormField>
       <div className="absolute -left-[9999px]" aria-hidden="true"><label htmlFor="contact-website">Website</label><input id="contact-website" name="website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={(event) => updateField("website", event.target.value)} /></div>
       <p className="text-[10px] leading-5 text-steel dark:text-mist-blue">By submitting, you agree that Cyber-I may use these details to respond to your enquiry. Review the <a className="underline underline-offset-4 hover:text-command-blue" href="/privacy-policy">privacy policy</a>.</p>
       <button type="submit" disabled={isSubmitting} className="flex min-h-12 w-full cursor-pointer items-center justify-center gap-3 border-2 border-command-blue bg-signal-blue px-6 py-4 text-xs font-bold tracking-[0.18em] text-intelligence-white uppercase transition-colors hover:border-electric-blue hover:bg-electric-blue hover:text-obsidian disabled:cursor-not-allowed disabled:opacity-60">

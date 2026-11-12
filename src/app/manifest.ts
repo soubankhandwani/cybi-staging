@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Cyber-I Consultancy",
+    name: SITE_NAME,
     short_name: "Cyber-I",
-    description: "Information analysis, cyber investigations, digital forensics, training, and strategic advisory.",
+    description: SITE_DESCRIPTION,
     start_url: "/",
     display: "standalone",
     background_color: "#f5f7fa",

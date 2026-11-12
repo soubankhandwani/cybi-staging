@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
+import { companyIntroduction, companyName } from "@/data/company";
 import { AmbientVideo } from "./AmbientVideo";
 import { useNeuronScroll } from "./useNeuronScroll";
 import sequences from "./flight-manifest.json";
@@ -12,22 +13,22 @@ const heroSequences = sequences.slice(0, 2);
 
 const chapters = [
   {
-    eyebrow: "Signal / 01",
+    eyebrow: companyName,
     label: "Information",
-    title: <>See what others<br />overlook.</>,
-    description: "We structure fragmented signals and reveal the patterns hidden inside complex information.",
+    title: "Strengthening Digital Investigations. Securing Organisations. Building Capability.",
+    description: companyIntroduction,
   },
   {
     eyebrow: "Evidence / 02",
     label: "Investigation",
-    title: <>Follow the facts<br />to the truth.</>,
-    description: "We trace digital evidence with forensic precision, preserving context from first lead to final finding.",
+    title: "Evidence-driven investigations.",
+    description: "We support investigations with intelligence gathering, digital analysis and specialist consultation.",
   },
   {
     eyebrow: "Action / 03",
     label: "Intelligence",
-    title: <>Move forward<br />with certainty.</>,
-    description: "We turn verified findings into decision-ready intelligence that protects people, systems, and institutions.",
+    title: "Build practical capability.",
+    description: "Our scenario-based training programmes help professionals and institutions build skills they can apply in the field.",
   },
 ];
 

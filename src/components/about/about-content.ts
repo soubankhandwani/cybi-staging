@@ -32,12 +32,12 @@ export const timelineStages = [
 ] as const;
 
 export const disciplines = [
-  { number: "01", title: "Investigation", note: "Incidents, activity and facts" },
+  { number: "01", title: "Cybercrime Investigation", note: "Intelligence gathering, digital analysis and investigative support" },
   { number: "02", title: "Digital Forensics", note: "Identification, preservation and examination" },
   { number: "03", title: "Cybersecurity", note: "Architecture, gaps and digital risk" },
-  { number: "04", title: "Cyber Law", note: "Evidence in legal and procedural context" },
-  { number: "05", title: "Information / Intelligence", note: "Analysis that supports decisions" },
-  { number: "06", title: "Professional Training", note: "Operational knowledge transferred to practitioners" },
+  { number: "04", title: "Techno-Legal Consulting", note: "Evidence authentication, forensic review and expert opinions" },
+  { number: "05", title: "Training & Capacity Building", note: "Practical, scenario-based learning for professionals and institutions" },
+  { number: "06", title: "Cyber Advisory Services", note: "Cyber risk, digital governance and incident preparedness" },
 ] as const;
 
 export const principles = [
@@ -52,15 +52,15 @@ export const principles = [
 export const experienceGroups = [
   {
     code: "INVESTIGATION / TRAINING",
-    organizations: ["Indian Navy", "Mumbai Police", "Maharashtra Police", "Maharashtra Police Academy", "Sher-I-Kashmir Police Academy"],
+    sectors: ["Law Enforcement", "Government Departments"],
   },
   {
-    code: "AUDIT / INVESTIGATION / FORENSICS",
-    organizations: ["Reliance Jio", "UltraTech Cement", "Red Chillies", "Ujjivan Bank", "CCIL India"],
+    code: "SECURITY / FORENSICS / ADVISORY",
+    sectors: ["Corporate Organisations", "Financial Institutions"],
   },
   {
-    code: "CERTIFICATION / TRAINING CONTEXT",
-    organizations: ["Reserve Bank of India", "State Bank of India", "Forensic State Lab, Mumbai"],
+    code: "TECHNO-LEGAL / CAPACITY BUILDING",
+    sectors: ["Legal Professionals", "Educational Institutions"],
   },
 ] as const;
 
@@ -91,8 +91,8 @@ export const audiences = [
   },
   {
     number: "05",
-    title: "Individuals",
-    description: "Cybercrime and digital-incident matters where specialist investigation or forensic support is relevant.",
+    title: "Legal Professionals",
+    description: "Digital evidence authentication, forensic review, expert opinions and cyber law consultation.",
     href: "/contact",
   },
 ] as const;

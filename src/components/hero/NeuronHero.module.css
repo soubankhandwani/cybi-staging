@@ -125,6 +125,11 @@
   text-wrap: balance;
 }
 
+.story h1 {
+  font-size: clamp(27px, 3.5vw, 53px);
+  text-wrap: pretty;
+}
+
 .description {
   max-width: 475px;
   margin: 20px 0 22px;
@@ -278,14 +283,14 @@
       linear-gradient(90deg, rgb(238 246 252 / 36%), transparent 70%);
   }
   .stories { bottom: 94px; }
-  .story :is(h1, h2) { font-size: clamp(38px, 9vw, 64px); }
+  .story h2 { font-size: clamp(38px, 9vw, 64px); }
   .description { max-width: 430px; }
   .scrollCue svg { display: none; }
 }
 
 @media (max-height: 690px) and (min-width: 640px) {
   .stories { bottom: 82px; }
-  .story :is(h1, h2) { font-size: clamp(34px, 7vh, 52px); }
+  .story h2 { font-size: clamp(34px, 7vh, 52px); }
   .eyebrow { margin-bottom: 10px; }
   .description { margin: 12px 0 12px; line-height: 1.45; }
   .bottomline { bottom: 18px; padding-top: 12px; }
@@ -331,7 +336,7 @@
   }
 
   .story:not([data-active="true"]) { display: none; }
-  .story :is(h1, h2) { font-size: clamp(34px, 10vw, 52px); }
+  .story h2 { font-size: clamp(34px, 10vw, 52px); }
   .description {
     margin: 14px 0 12px;
     font-size: 12px;
@@ -358,7 +363,7 @@
   .ambient { min-height: 240px; }
   .poster { transform: scale(1.4); transform-origin: right center; }
   .stories { align-self: center; }
-  .story :is(h1, h2) { font-size: clamp(32px, 5.6vw, 44px); }
+  .story h2 { font-size: clamp(32px, 5.6vw, 44px); }
   .bottomline { grid-column: 1 / -1; }
 }
 

@@ -49,14 +49,14 @@ export const faqItems = [
   },
   {
     question: "How long does an investigation take?",
-    answer: "The supplied information does not define standard investigation timelines. Duration depends on scope, available evidence, systems involved and the questions to be examined.",
+    answer: "Duration depends on scope, available evidence, systems involved and the questions to be examined. Contact us to discuss your matter.",
   },
   {
     question: "Can an investigation guarantee recovery, attribution or a legal outcome?",
     answer: "No outcome should be assumed or guaranteed. Investigation findings depend on the available information, accessible evidence and the circumstances of the matter.",
   },
   {
-    question: "Does Cyber-I work with individuals as well as organizations?",
-    answer: "The legacy material states that investigation and forensic services are offered to corporations, governments, institutes and individuals. Exact scope should be confirmed during the initial discussion.",
+    question: "Who does Cyber-I work with?",
+    answer: "We work with law enforcement agencies, legal professionals, financial institutions, corporate organisations, government departments and educational institutions.",
   },
 ] as const;

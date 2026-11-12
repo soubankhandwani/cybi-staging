@@ -1,4 +1,5 @@
 import { AboutLabel } from "@/components/about/AboutPrimitives";
+import { companyPurpose } from "@/data/company";
 import { timelineStages } from "@/components/about/about-content";
 
 export function MissionVision() {
@@ -10,17 +11,15 @@ export function MissionVision() {
           <AboutLabel>03 / Mission</AboutLabel>
           <h3 className="sr-only">Mission</h3>
           <p className="mt-10 max-w-2xl text-2xl leading-tight font-bold tracking-[-0.035em] sm:text-4xl">
-            Help organizations and individuals understand digital incidents, uncover and examine evidence, assess digital risk and make informed decisions.
+            {companyPurpose.mission}
           </p>
-          <p className="mt-10 text-[9px] font-bold tracking-[0.15em] text-command-blue uppercase">[Proposed copy — client approval required]</p>
         </article>
         <article className="p-7 sm:p-10 lg:p-12">
           <AboutLabel>04 / Vision</AboutLabel>
           <h3 className="sr-only">Vision</h3>
           <p className="mt-10 max-w-2xl text-2xl leading-tight font-bold tracking-[-0.035em] sm:text-4xl">
-            A more informed response to cybercrime and digital risk—where evidence, investigation, technology and law are understood together.
+            {companyPurpose.vision}
           </p>
-          <p className="mt-10 text-[9px] font-bold tracking-[0.15em] text-command-blue uppercase">[Proposed copy — client approval required]</p>
         </article>
       </div>
     </section>
@@ -34,7 +33,7 @@ export function CompanyTimeline() {
         <header className="border-b border-deep-navy p-7 sm:p-10 lg:border-r lg:border-b-0 lg:p-12">
           <AboutLabel>05 / Case-file Chronology</AboutLabel>
           <h2 id="story-title" className="mt-8 text-4xl leading-none font-bold tracking-[-0.05em] uppercase sm:text-5xl">The Cyber-I story.</h2>
-          <p className="mt-6 max-w-sm text-sm leading-7 text-deep-navy">The supplied source does not contain a verified company history. This structure is intentionally ready for factual dates and milestones.</p>
+          <p className="mt-6 max-w-sm text-sm leading-7 text-deep-navy">Company milestones will be added as they become available.</p>
         </header>
         <ol className="grid sm:grid-cols-2 lg:grid-cols-3">
           {timelineStages.map((stage, index) => (

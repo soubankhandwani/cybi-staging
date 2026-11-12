@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { serviceDescriptions } from "@/data/site-content";
 import { AboutLabel, ActionLink, CornerMarks } from "@/components/about/AboutPrimitives";
 import { EditorialImagePlaceholder } from "@/components/ui/EditorialImagePlaceholder";
 import { TechnicalGrid } from "@/components/ui/TechnicalGrid";
@@ -14,7 +15,7 @@ export function ServiceDetailHero() {
             <nav aria-label="Breadcrumb" className="mt-4 flex flex-wrap gap-2 text-[9px] font-bold tracking-[0.14em] text-mist-blue uppercase">
               <Link href="/" className="hover:text-electric-blue">Home</Link><span aria-hidden="true">/</span>
               <Link href="/services" className="hover:text-electric-blue">Services</Link><span aria-hidden="true">/</span>
-              <span aria-current="page">Cyber Crime Investigation</span>
+              <span aria-current="page">Cybercrime Investigation</span>
             </nav>
           </div>
 
@@ -29,8 +30,8 @@ export function ServiceDetailHero() {
 
           <div className="grid gap-8 border-t border-deep-navy pt-7 xl:grid-cols-[1fr_auto] xl:items-end">
             <div>
-              <p className="max-w-3xl text-sm leading-7 font-bold text-mist-blue md:text-base">Cyber-I investigates cybercrime, fraud, hacking, data theft and other technology-assisted incidents—helping clients identify relevant digital evidence, establish findings and determine an appropriate next step.</p>
-              <p className="mt-4 text-[9px] font-bold tracking-[0.13em] text-electric-blue uppercase">Corporations / Government / Institutions / Individuals</p>
+              <p className="max-w-3xl text-sm leading-7 font-bold text-mist-blue md:text-base">{serviceDescriptions.investigation}</p>
+              <p className="mt-4 text-[9px] font-bold tracking-[0.13em] text-electric-blue uppercase">Law enforcement / Legal professionals / Organisations</p>
             </div>
             <ActionLink href="/contact" variant="light" event="service_primary_cta_click">Discuss an Incident</ActionLink>
           </div>
@@ -47,7 +48,6 @@ export function ServiceDetailHero() {
               inverse
               className="service-detail-media-reveal min-h-[430px] flex-1"
             />
-            <p className="border-l-2 border-electric-blue pl-4 text-[9px] leading-5 font-bold tracking-[0.11em] text-mist-blue uppercase">Practitioner, cyber-lab, legal and forensic team-background claims require verification before production publication.</p>
           </div>
         </aside>
       </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ActionLink, AboutLabel, CornerMarks } from "@/components/about/AboutPrimitives";
+import { companyName } from "@/data/company";
 import { TechnicalGrid } from "@/components/ui/TechnicalGrid";
 
 const globeVideo = "https://res.cloudinary.com/dbzx2pddp/video/upload/v1781262794/Add_revolution_to_earth_globe_202606121642_z2gkcs.mp4";
@@ -13,7 +14,7 @@ export function AboutHero() {
         <div className="flex flex-col justify-between px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
           <div className="flex items-start justify-between gap-6">
             <div>
-              <AboutLabel>About / Cyber-I Consultancy</AboutLabel>
+              <AboutLabel>About / {companyName}</AboutLabel>
               <nav aria-label="Breadcrumb" className="mt-4 flex gap-2 text-[9px] font-bold tracking-[0.16em] text-steel uppercase">
                 <Link href="/" className="hover:text-command-blue">Home</Link><span aria-hidden="true">/</span><span aria-current="page">About</span>
               </nav>
@@ -23,16 +24,15 @@ export function AboutHero() {
 
           <div className="my-14 lg:my-20">
             <h1 id="about-title" className="text-[clamp(3.15rem,8.15vw,9rem)] leading-[0.88] font-bold tracking-[-0.07em] uppercase">
-              <span className="about-hero-line block">Information.</span>
-              <span className="about-hero-line block text-command-blue dark:text-electric-blue">Investigation.</span>
-              <span className="about-hero-line block">Intelligence.</span>
+              <span className="about-hero-line block">Who We <span className="text-command-blue dark:text-electric-blue">Are</span></span>
             </h1>
           </div>
 
           <div className="grid items-end gap-8 border-t border-mist-blue pt-7 md:grid-cols-[minmax(0,1fr)_auto] dark:border-deep-navy">
-            <p className="max-w-3xl text-sm leading-7 font-bold tracking-[0.04em] text-deep-navy dark:text-mist-blue md:text-base">
-              Cyber-I brings together cybercrime investigation, digital forensics, cybersecurity, cyber law and professional training—helping organizations and individuals understand complex digital matters and determine an informed next step.
-            </p>
+            <div className="max-w-3xl space-y-4 text-sm leading-7 font-bold text-deep-navy dark:text-mist-blue md:text-base">
+              <p>Cyber-I Consultancy Services is a specialised organisation working at the intersection of cybercrime investigation, digital forensics, cybersecurity, and techno-legal consulting. Our work is grounded in technical expertise and a clear understanding of legal procedures, evidentiary standards, and operational realities.</p>
+              <p>We work closely with law enforcement agencies, legal professionals, financial institutions, corporates, government organisations, and educational institutions, delivering services that strengthen investigations, improve organisational resilience, and build long-term technical capability.</p>
+            </div>
             <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
               <ActionLink href="/services" event="about_hero_services">Explore Our Services</ActionLink>
               <ActionLink href="/contact" variant="outline" event="about_hero_contact">Talk to an Expert</ActionLink>

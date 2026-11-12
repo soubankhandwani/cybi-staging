@@ -10,11 +10,10 @@ export function InstitutionalExperience() {
       <header className="grid grid-cols-1 border-b border-deep-navy lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
         <div className="p-7 sm:p-10 lg:border-r lg:p-12">
           <AboutLabel>09 / Institutional experience</AboutLabel>
-          <h2 id="experience-title" className="mt-8 text-4xl leading-none font-bold tracking-[-0.05em] uppercase sm:text-6xl">Experience named in the legacy record.</h2>
+          <h2 id="experience-title" className="mt-8 text-4xl leading-none font-bold tracking-[-0.05em] uppercase sm:text-6xl">Experience across sectors.</h2>
         </div>
         <div className="border-t border-deep-navy p-7 sm:p-10 lg:border-t-0 lg:p-12">
-          <p className="text-sm leading-7 text-deep-navy">The source material references the organizations below in client, training or engagement contexts. The exact relationship type for each must be confirmed before production publication.</p>
-          <p className="mt-5 text-[9px] leading-5 font-bold tracking-[0.13em] text-command-blue uppercase">Neutral presentation / No endorsement implied / Verification required</p>
+          <p className="text-sm leading-7 text-deep-navy">We work with organisations across law enforcement, government, finance, business, education and legal practice.</p>
           <EditorialImagePlaceholder
             code="INST / PROGRAM_RECORD / 09"
             subject="Recommended subject: approved photography from an institutional training program, workshop or official engagement."
@@ -28,11 +27,10 @@ export function InstitutionalExperience() {
           <article key={group.code} className="border-b border-deep-navy p-7 last:border-b-0 sm:p-9 lg:border-r lg:border-b-0 lg:last:border-r-0">
             <h3 className="min-h-10 text-[10px] leading-5 font-bold tracking-[0.15em] text-command-blue uppercase">{group.code}</h3>
             <ul className="mt-7 border-t border-deep-navy">
-              {group.organizations.map((organization) => (
-                <li key={organization} className="border-b border-deep-navy py-4 text-sm font-bold tracking-[-0.01em]">{organization}</li>
+              {group.sectors.map((sector) => (
+                <li key={sector} className="border-b border-deep-navy py-4 text-sm font-bold tracking-[-0.01em]">{sector}</li>
               ))}
             </ul>
-            <p className="mt-5 text-[8px] leading-4 font-bold tracking-[0.12em] text-steel uppercase">[Relationship classification pending verification]</p>
           </article>
         ))}
       </div>
